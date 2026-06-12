@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>BIOKDD — 25 Years of Mining Life's Code</title>
+<meta name="description" content="The International Workshop on Data Mining in Bioinformatics — held annually with ACM SIGKDD since 2001. Twenty-five years of biomedical data-mining research, from sequence motifs to digital twins." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --ink:#0B1F33;
+  --ink-2:#1D3454;
+  --paper:#FBF7F0;
+  --paper-2:#F2ECDE;
+  --line:#D7CFBE;
+  --muted:#6F7A88;
+  --brand:#1E5BAF;
+  --brand-d:#143F7E;
+  --p1:#3B5BA5;   /* Phase 1 — Founding */
+  --p2:#22A77C;   /* Phase 2 — Networks & NGS */
+  --p3:#E08B2D;   /* Phase 3 — Deep Learning */
+  --p4:#C0392B;   /* Phase 4 — GenAI / Digital Twins */
+  --gold:#C99A3A;
+  --shadow: 0 12px 30px rgba(11,31,51,.08), 0 2px 6px rgba(11,31,51,.06);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+.serif{font-family:'Source Serif 4', Georgia, serif; letter-spacing:-.01em}
+.mono{font-family:'JetBrains Mono', ui-monospace, Menlo, monospace}
+
+/* ---- top nav ---- */
+nav.top{
+  position:sticky; top:0; z-index:50;
+  backdrop-filter:saturate(140%) blur(10px);
+  background:rgba(251,247,240,.82);
+  border-bottom:1px solid rgba(11,31,51,.08);
+}
+nav.top .wrap{
+  max-width:1240px; margin:0 auto; padding:14px 28px;
+  display:flex; align-items:center; gap:28px;
+}
+.brand{display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--ink)}
+.brand img.mark{
+  height:34px; width:auto; max-width:160px; display:block;
+}
+.brand svg.mark{ width:36px; height:36px }
+.brand .word{font-weight:700; font-family:'Source Serif 4',serif; font-size:20px; letter-spacing:.02em}
+.brand .word em{font-style:normal; color:var(--brand)}
+nav.top ul{list-style:none; display:flex; gap:22px; margin:0; padding:0; margin-left:auto}
+nav.top ul a{color:var(--ink); text-decoration:none; font-weight:500; font-size:14.5px}
+nav.top ul a:hover{color:var(--brand)}
+nav.top .cta{
+  background:var(--ink); color:#fff; padding:9px 16px; border-radius:999px;
+  font-size:13.5px; font-weight:600; text-decoration:none;
+  display:inline-flex; align-items:center; gap:8px;
+}
+nav.top .cta::after{content:'→'; transition:transform .2s}
+nav.top .cta:hover{background:var(--brand)}
+nav.top .cta:hover::after{transform:translateX(3px)}
+
+/* ---- hero ---- */
+header.hero{
+  position:relative; overflow:hidden;
+  background:
+    radial-gradient(1100px 600px at 80% -10%, rgba(30,91,175,.13), transparent 60%),
+    radial-gradient(900px 500px at -10% 90%, rgba(34,167,124,.10), transparent 60%),
+    linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
+  border-bottom:1px solid var(--line);
+}
+.hero .wrap{
+  max-width:1240px; margin:0 auto; padding:80px 28px 60px;
+  display:grid; grid-template-columns:1.25fr 1fr; gap:48px; align-items:center;
+}
+.hero .kicker{
+  display:inline-flex; align-items:center; gap:10px;
+  font-size:12.5px; letter-spacing:.16em; text-transform:uppercase; font-weight:600;
+  color:var(--brand-d);
+  padding:6px 12px; border-radius:999px;
+  background:rgba(30,91,175,.08); border:1px solid rgba(30,91,175,.18);
+}
+.hero h1{
+  font-family:'Source Serif 4', serif;
+  font-weight:700; font-size:clamp(40px, 5.4vw, 72px);
+  line-height:1.04; letter-spacing:-.02em;
+  margin:18px 0 22px;
+}
+.hero h1 span.accent{
+  background:linear-gradient(90deg, var(--brand) 0%, var(--p2) 50%, var(--p3) 100%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.hero p.lead{
+  font-size:19px; color:var(--ink-2); max-width:580px; margin:0 0 28px;
+}
+.hero .btns{display:flex; gap:14px; flex-wrap:wrap}
+.hero a.btn{
+  display:inline-flex; align-items:center; gap:10px;
+  padding:13px 22px; border-radius:999px;
+  text-decoration:none; font-weight:600; font-size:15px;
+  transition:transform .15s, box-shadow .2s;
+}
+.hero a.btn.primary{background:var(--ink); color:#fff}
+.hero a.btn.primary:hover{background:var(--brand); transform:translateY(-1px); box-shadow:var(--shadow)}
+.hero a.btn.ghost{background:transparent; color:var(--ink); border:1.5px solid var(--ink)}
+.hero a.btn.ghost:hover{border-color:var(--brand); color:var(--brand)}
+
+/* hero figure — animated helix + node constellation */
+.hero figure{margin:0; position:relative; aspect-ratio:1.05/1; max-width:520px; justify-self:end}
+.hero figure svg{width:100%; height:auto}
+
+/* ---- stats bar ---- */
+.stats{
+  background:var(--ink); color:#fff;
+  border-top:1px solid rgba(255,255,255,.08);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.stats .wrap{
+  max-width:1240px; margin:0 auto; padding:26px 28px;
+  display:grid; grid-template-columns:repeat(5, 1fr); gap:24px;
+}
+.stat{display:flex; flex-direction:column; gap:4px}
+.stat .num{font-family:'Source Serif 4', serif; font-weight:700; font-size:36px; line-height:1; letter-spacing:-.02em}
+.stat .lab{font-size:12.5px; color:#A6B6C9; letter-spacing:.04em; text-transform:uppercase; font-weight:500}
+.stat:nth-child(1) .num{color:#fff}
+.stat:nth-child(2) .num{color:#9DBCEC}
+.stat:nth-child(3) .num{color:#5ED4AC}
+.stat:nth-child(4) .num{color:#F5B36A}
+.stat:nth-child(5) .num{color:#F08A7C}
+
+/* ---- section base ---- */
+section{padding:96px 0; position:relative}
+section .wrap{max-width:1240px; margin:0 auto; padding:0 28px}
+section .eyebrow{
+  font-size:12.5px; letter-spacing:.18em; text-transform:uppercase; font-weight:700;
+  color:var(--brand-d); margin-bottom:14px;
+}
+section h2{
+  font-family:'Source Serif 4', serif; font-weight:700;
+  font-size:clamp(30px, 3.6vw, 48px); letter-spacing:-.02em; line-height:1.1;
+  margin:0 0 16px; max-width:780px;
+}
+section p.deck{
+  font-size:18px; color:var(--ink-2); max-width:760px; margin:0 0 56px;
+}
+
+/* about */
+#about .grid{display:grid; grid-template-columns:1.1fr 1fr; gap:60px; align-items:start}
+#about .pull{
+  font-family:'Source Serif 4', serif; font-size:22px; line-height:1.45; color:var(--ink);
+  border-left:3px solid var(--brand); padding:6px 0 6px 22px;
+}
+#about ul.bullets{list-style:none; margin:0; padding:0; display:grid; gap:16px}
+#about ul.bullets li{
+  position:relative; padding-left:28px;
+  font-size:16px; color:var(--ink-2); line-height:1.55;
+}
+#about ul.bullets li::before{
+  content:''; position:absolute; left:4px; top:10px;
+  width:10px; height:10px; border-radius:50%;
+  background:var(--brand);
+}
+#about ul.bullets li:nth-child(2)::before{background:var(--p2)}
+#about ul.bullets li:nth-child(3)::before{background:var(--p3)}
+#about ul.bullets li:nth-child(4)::before{background:var(--p4)}
+#about ul.bullets li strong{color:var(--ink); font-weight:600}
+
+/* phases */
+#phases{background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+.phase-grid{display:grid; grid-template-columns:repeat(4, 1fr); gap:22px}
+.phase{
+  background:#fff; border-radius:18px; padding:28px 26px 30px;
+  box-shadow:var(--shadow);
+  border-top:5px solid var(--ink);
+  display:flex; flex-direction:column; gap:14px;
+  position:relative; overflow:hidden;
+}
+.phase[data-p="1"]{border-top-color:var(--p1)}
+.phase[data-p="2"]{border-top-color:var(--p2)}
+.phase[data-p="3"]{border-top-color:var(--p3)}
+.phase[data-p="4"]{border-top-color:var(--p4)}
+.phase .badge{
+  font-family:'JetBrains Mono', monospace; font-size:12px; font-weight:700;
+  letter-spacing:.06em; color:var(--muted); text-transform:uppercase;
+}
+.phase[data-p="1"] .badge{color:var(--p1)}
+.phase[data-p="2"] .badge{color:var(--p2)}
+.phase[data-p="3"] .badge{color:var(--p3)}
+.phase[data-p="4"] .badge{color:var(--p4)}
+.phase h3{font-family:'Source Serif 4', serif; font-weight:700; font-size:22px; margin:0; line-height:1.2}
+.phase p{margin:0; color:var(--ink-2); font-size:15.5px}
+.phase .tags{display:flex; flex-wrap:wrap; gap:6px; margin-top:6px}
+.phase .tag{
+  font-size:11.5px; padding:4px 9px; border-radius:999px;
+  background:rgba(11,31,51,.06); color:var(--ink-2); font-weight:500;
+}
+.phase[data-p="1"] .tag{background:rgba(59,91,165,.10); color:var(--p1)}
+.phase[data-p="2"] .tag{background:rgba(34,167,124,.12); color:#0F6F50}
+.phase[data-p="3"] .tag{background:rgba(224,139,45,.14); color:#9B5A12}
+.phase[data-p="4"] .tag{background:rgba(192,57,43,.10); color:var(--p4)}
+
+/* timeline */
+#timeline{padding-bottom:120px}
+.tl-head{display:flex; align-items:end; justify-content:space-between; margin-bottom:34px; gap:24px; flex-wrap:wrap}
+.tl-filter{display:flex; flex-wrap:wrap; gap:8px}
+.tl-filter button{
+  border:1px solid var(--line); background:#fff; color:var(--ink);
+  padding:9px 14px; border-radius:999px; font-size:13.5px; font-weight:500;
+  cursor:pointer; transition:all .15s;
+  font-family:inherit;
+}
+.tl-filter button:hover{border-color:var(--ink)}
+.tl-filter button.active{background:var(--ink); color:#fff; border-color:var(--ink)}
+.tl-filter button[data-p="1"].active{background:var(--p1); border-color:var(--p1)}
+.tl-filter button[data-p="2"].active{background:var(--p2); border-color:var(--p2)}
+.tl-filter button[data-p="3"].active{background:var(--p3); border-color:var(--p3)}
+.tl-filter button[data-p="4"].active{background:var(--p4); border-color:var(--p4)}
+
+/* axis ribbon — phase bands */
+.tl-ribbon{
+  display:grid; grid-template-columns:8fr 5fr 6fr 6fr;
+  height:8px; border-radius:999px; overflow:hidden; margin-bottom:18px;
+}
+.tl-ribbon span:nth-child(1){background:var(--p1)}
+.tl-ribbon span:nth-child(2){background:var(--p2)}
+.tl-ribbon span:nth-child(3){background:var(--p3)}
+.tl-ribbon span:nth-child(4){background:var(--p4)}
+.tl-ribbon-labels{
+  display:grid; grid-template-columns:8fr 5fr 6fr 6fr;
+  font-size:12px; font-family:'JetBrains Mono', monospace; color:var(--muted);
+  margin-bottom:30px; gap:0;
+}
+.tl-ribbon-labels span{padding-top:6px}
+.tl-ribbon-labels span:nth-child(1){color:var(--p1)}
+.tl-ribbon-labels span:nth-child(2){color:var(--p2); }
+.tl-ribbon-labels span:nth-child(3){color:var(--p3); }
+.tl-ribbon-labels span:nth-child(4){color:var(--p4); }
+
+.tl-grid{
+  display:grid; grid-template-columns:repeat(auto-fill, minmax(220px, 1fr));
+  gap:18px;
+}
+a.year{
+  position:relative; text-decoration:none; color:inherit;
+  background:#fff; border-radius:16px; padding:18px 20px 20px;
+  border:1px solid var(--line);
+  display:flex; flex-direction:column; gap:6px;
+  transition:transform .18s, box-shadow .18s, border-color .18s;
+  overflow:hidden;
+}
+a.year::before{
+  content:''; position:absolute; left:0; top:0; bottom:0; width:4px;
+  background:var(--ink);
+}
+a.year[data-p="1"]::before{background:var(--p1)}
+a.year[data-p="2"]::before{background:var(--p2)}
+a.year[data-p="3"]::before{background:var(--p3)}
+a.year[data-p="4"]::before{background:var(--p4)}
+a.year:hover{transform:translateY(-3px); box-shadow:var(--shadow); border-color:transparent}
+a.year .hd{display:flex; align-items:baseline; justify-content:space-between; gap:8px}
+a.year .yr{font-family:'Source Serif 4', serif; font-weight:700; font-size:28px; letter-spacing:-.02em}
+a.year .ord{font-family:'JetBrains Mono', monospace; font-size:11.5px; color:var(--muted); font-weight:600}
+a.year .loc{font-size:13.5px; color:var(--muted); display:flex; align-items:center; gap:5px}
+a.year .theme{font-size:14.5px; color:var(--ink); font-weight:500; margin-top:6px; line-height:1.4}
+a.year.skip{background:repeating-linear-gradient(135deg, #F4EFE0 0 8px, #EFE9D6 8px 16px); pointer-events:none}
+a.year.skip::before{background:var(--muted)}
+a.year.skip .yr, a.year.skip .theme{color:var(--muted)}
+a.year.current{background:linear-gradient(180deg, #fff 0%, #FFF8E8 100%); border-color:var(--gold)}
+a.year.current::after{
+  content:'2026'; position:absolute; top:14px; right:14px;
+  font-family:'JetBrains Mono', monospace; font-weight:700; font-size:10.5px;
+  background:var(--gold); color:#fff; padding:3px 8px; border-radius:999px;
+  letter-spacing:.06em;
+}
+a.year.dim{opacity:.22; filter:grayscale(.4)}
+
+/* organizers */
+#org{background:var(--ink); color:#fff}
+#org .eyebrow{color:#8DB1E5}
+#org h2{color:#fff}
+#org p.deck{color:#B7C5D5}
+.org-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:22px}
+.person{
+  background:#142B47; border-radius:18px; padding:26px 26px 28px;
+  border:1px solid #1E3B5C;
+}
+.person .role{
+  font-family:'JetBrains Mono', monospace; font-size:11.5px;
+  letter-spacing:.1em; text-transform:uppercase; color:#8DB1E5; font-weight:700;
+  margin-bottom:10px;
+}
+.person h3{font-family:'Source Serif 4', serif; font-weight:700; font-size:24px; margin:0 0 4px; color:#fff}
+.person .aff{font-size:14px; color:#A2B7D1; margin-bottom:14px}
+.person p{font-size:14.5px; color:#CFD9E5; margin:0 0 18px; line-height:1.55}
+.person .profile{
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:13px; font-weight:600; color:#8DB1E5; text-decoration:none;
+  padding:9px 14px; border-radius:999px;
+  background:rgba(141,177,229,.10); border:1px solid rgba(141,177,229,.25);
+  transition:all .15s;
+}
+.person .profile:hover{background:rgba(141,177,229,.20); color:#fff; border-color:rgba(141,177,229,.55)}
+.person .profile::after{content:'↗'; font-size:12px}
+
+/* current year banner */
+#this-year{
+  background:
+    radial-gradient(700px 400px at 90% 110%, rgba(192,57,43,.18), transparent 60%),
+    linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
+}
+#this-year .wrap{display:grid; grid-template-columns:1.2fr 1fr; gap:48px; align-items:center}
+#this-year .tag{
+  display:inline-block; font-family:'JetBrains Mono', monospace; font-size:12px;
+  letter-spacing:.12em; text-transform:uppercase; color:var(--p4); font-weight:700;
+  margin-bottom:14px;
+}
+#this-year h2{margin-bottom:16px}
+#this-year .meta{
+  display:flex; flex-wrap:wrap; gap:18px; margin:18px 0 28px;
+  font-size:14.5px; color:var(--ink-2);
+}
+#this-year .meta div{display:flex; gap:8px; align-items:center}
+#this-year .meta .lab{font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--muted); font-weight:600}
+#this-year a.cta{
+  display:inline-flex; align-items:center; gap:10px;
+  background:var(--p4); color:#fff; padding:13px 22px; border-radius:999px;
+  text-decoration:none; font-weight:600; font-size:15px;
+}
+#this-year a.cta:hover{background:#8E2A1F}
+#this-year .tracks{
+  background:#fff; border-radius:18px; padding:28px; box-shadow:var(--shadow);
+  border:1px solid var(--line);
+}
+#this-year .tracks h4{
+  font-family:'Source Serif 4', serif; font-size:20px; margin:0 0 16px;
+}
+#this-year .tracks ul{list-style:none; padding:0; margin:0; display:grid; gap:12px}
+#this-year .tracks li{
+  display:grid; grid-template-columns:auto 1fr; gap:14px;
+  padding:10px 0; border-bottom:1px solid var(--line); font-size:14.5px;
+}
+#this-year .tracks li:last-child{border-bottom:none}
+#this-year .tracks .k{
+  font-family:'JetBrains Mono', monospace; color:var(--p4); font-weight:700; font-size:13px;
+}
+
+/* footer */
+footer{
+  background:var(--ink); color:#A7B7CB;
+  padding:60px 28px 38px;
+  border-top:1px solid #1E3B5C;
+}
+footer .wrap{max-width:1240px; margin:0 auto}
+footer .row{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:36px}
+footer h5{
+  color:#fff; font-family:'Source Serif 4', serif; font-size:16px; margin:0 0 14px;
+}
+footer a{color:#A7B7CB; text-decoration:none; font-size:14px}
+footer a:hover{color:#fff}
+footer ul{list-style:none; padding:0; margin:0; display:grid; gap:8px}
+footer .legal{
+  margin-top:42px; padding-top:24px; border-top:1px solid #1E3B5C;
+  display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap;
+  font-size:13px;
+}
+
+/* ---- responsive ---- */
+@media (max-width: 960px){
+  .hero .wrap{grid-template-columns:1fr; padding:60px 24px 40px}
+  .hero figure{justify-self:start; max-width:380px}
+  .stats .wrap{grid-template-columns:repeat(2, 1fr); padding:22px 24px}
+  #about .grid, #this-year .wrap{grid-template-columns:1fr; gap:36px}
+  #community .wrap > div:last-child{grid-template-columns:1fr !important; gap:24px !important}
+  .phase-grid{grid-template-columns:repeat(2, 1fr)}
+  .org-grid{grid-template-columns:1fr}
+  footer .row{grid-template-columns:1fr 1fr}
+  nav.top ul{display:none}
+}
+@media (max-width: 560px){
+  section{padding:64px 0}
+  .phase-grid{grid-template-columns:1fr}
+  .stats .wrap{grid-template-columns:1fr 1fr; gap:18px}
+  .stat .num{font-size:30px}
+  footer .row{grid-template-columns:1fr}
+  .tl-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <img class="mark" src="https://biokdd.org/biokdd26/img/logo.png" alt="BIOKDD logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex'">
+      <span class="word" style="display:none">BIO<em>KDD</em></span>
+    </a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#phases">History</a></li>
+      <li><a href="#timeline">Years</a></li>
+      <li><a href="#org">Organizers</a></li>
+      <li><a href="#community">Community</a></li>
+    </ul>
+    <a class="cta" href="https://biokdd.org/biokdd26/">BIOKDD 2026</a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <div class="kicker">Est. 2001 · 25-year retrospective</div>
+      <h1 class="serif">Twenty-five years of <span class="accent">mining life's code</span>.</h1>
+      <p class="lead">BIOKDD is among the <strong style="color:var(--ink)">longest-running workshops at the ACM&nbsp;SIGKDD Conference</strong> and the longest-running one devoted to biomedical data&nbsp;mining — from the first sequence-motif algorithms of 2001 to the digital&nbsp;twins of 2026. Every year, the field's evolving frontier has been tested, debated, and published here.</p>
+      <div class="btns">
+        <a class="btn primary" href="https://biokdd.org/biokdd26/">Attend BIOKDD 2026 →</a>
+        <a class="btn ghost" href="#timeline">Browse 25 years of editions</a>
+      </div>
+    </div>
+    <figure aria-hidden="true">
+      <!-- decorative SVG: stylised twin helix with phase-coloured nodes -->
+      <svg viewBox="0 0 520 520" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="rib1" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#1E5BAF" stop-opacity=".55"/>
+            <stop offset="1" stop-color="#22A77C" stop-opacity=".55"/>
+          </linearGradient>
+          <linearGradient id="rib2" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#E08B2D" stop-opacity=".55"/>
+            <stop offset="1" stop-color="#C0392B" stop-opacity=".55"/>
+          </linearGradient>
+          <radialGradient id="halo" cx="50%" cy="50%" r="50%">
+            <stop offset="0" stop-color="#FBF7F0" stop-opacity="0"/>
+            <stop offset="1" stop-color="#1E5BAF" stop-opacity=".08"/>
+          </radialGradient>
+        </defs>
+        <circle cx="260" cy="260" r="240" fill="url(#halo)"/>
+
+        <!-- helix ribbons -->
+        <g stroke-width="3" fill="none" stroke-linecap="round">
+          <!-- left ribbon -->
+          <path d="M120 60 C 360 100, 80 160, 320 200 C 80 240, 360 300, 120 340 C 360 380, 80 440, 320 480"
+                stroke="url(#rib1)"/>
+          <!-- right ribbon -->
+          <path d="M320 60 C 80 100, 360 160, 120 200 C 360 240, 80 300, 320 340 C 80 380, 360 440, 120 480"
+                stroke="url(#rib2)"/>
+        </g>
+
+        <!-- rungs -->
+        <g stroke="#0B1F33" stroke-opacity=".35" stroke-width="1.2">
+          <line x1="160" y1="80"  x2="280" y2="80"/>
+          <line x1="260" y1="120" x2="180" y2="120"/>
+          <line x1="170" y1="160" x2="290" y2="160"/>
+          <line x1="270" y1="200" x2="170" y2="200"/>
+          <line x1="170" y1="240" x2="290" y2="240"/>
+          <line x1="270" y1="280" x2="170" y2="280"/>
+          <line x1="160" y1="320" x2="280" y2="320"/>
+          <line x1="270" y1="360" x2="170" y2="360"/>
+          <line x1="170" y1="400" x2="290" y2="400"/>
+          <line x1="280" y1="440" x2="170" y2="440"/>
+        </g>
+
+        <!-- phase-colored node beads -->
+        <g>
+          <circle cx="160" cy="80"  r="7" fill="#3B5BA5"/>
+          <circle cx="280" cy="80"  r="7" fill="#3B5BA5"/>
+          <circle cx="180" cy="120" r="7" fill="#3B5BA5"/>
+          <circle cx="260" cy="120" r="7" fill="#3B5BA5"/>
+
+          <circle cx="170" cy="160" r="7" fill="#22A77C"/>
+          <circle cx="290" cy="160" r="7" fill="#22A77C"/>
+          <circle cx="170" cy="200" r="7" fill="#22A77C"/>
+          <circle cx="270" cy="200" r="7" fill="#22A77C"/>
+
+          <circle cx="170" cy="240" r="7" fill="#E08B2D"/>
+          <circle cx="290" cy="240" r="7" fill="#E08B2D"/>
+          <circle cx="170" cy="280" r="7" fill="#E08B2D"/>
+          <circle cx="270" cy="280" r="7" fill="#E08B2D"/>
+
+          <circle cx="160" cy="320" r="7" fill="#C0392B"/>
+          <circle cx="280" cy="320" r="7" fill="#C0392B"/>
+          <circle cx="170" cy="360" r="7" fill="#C0392B"/>
+          <circle cx="270" cy="360" r="7" fill="#C0392B"/>
+        </g>
+
+        <!-- year markers along outer arc -->
+        <g font-family="'JetBrains Mono', monospace" font-size="12" fill="#0B1F33" opacity=".75">
+          <text x="80"  y="74"  text-anchor="end">2001</text>
+          <text x="80"  y="200" text-anchor="end">2010</text>
+          <text x="80"  y="320" text-anchor="end">2017</text>
+          <text x="80"  y="440" text-anchor="end">2026</text>
+        </g>
+
+        <!-- 25 badge -->
+        <g transform="translate(380,380)">
+          <circle r="60" fill="#0B1F33"/>
+          <text text-anchor="middle" y="-4" font-family="'Source Serif 4', serif" font-weight="700" font-size="36" fill="#FBF7F0">25</text>
+          <text text-anchor="middle" y="22" font-family="'JetBrains Mono', monospace" font-size="10" fill="#9DBCEC" letter-spacing="2">YEARS</text>
+        </g>
+      </svg>
+    </figure>
+  </div>
+</header>
+
+<!-- ============ STATS ============ -->
+<div class="stats">
+  <div class="wrap">
+    <div class="stat"><div class="num">25</div><div class="lab">Years (2001 – 2026)</div></div>
+    <div class="stat"><div class="num">24</div><div class="lab">Editions held</div></div>
+    <div class="stat"><div class="num">~350</div><div class="lab">Workshop papers</div></div>
+    <div class="stat"><div class="num">~60</div><div class="lab">Keynote speakers</div></div>
+    <div class="stat"><div class="num">4</div><div class="lab">Research eras</div></div>
+  </div>
+</div>
+
+<!-- ============ WELCOME ============ -->
+<section id="welcome" style="padding-top:72px; padding-bottom:72px">
+  <div class="wrap">
+    <div style="max-width:880px; margin:0 auto; background:#fff; border:1px solid var(--line); border-left:5px solid var(--brand); border-radius:16px; padding:38px 44px; box-shadow:var(--shadow); position:relative">
+      <div class="eyebrow" style="margin-bottom:18px">A note from the chair</div>
+      <p style="font-family:'Inter', sans-serif; font-size:17.5px; line-height:1.6; color:var(--ink); margin:0 0 18px">
+        Welcome to BIOKDD's 25-year retrospective. What started in 2001 as a small workshop at ACM&nbsp;SIGKDD has grown into the longest-running forum where data mining and biology meet — a place where new methods test themselves against new biology, where students share a session with department chairs, and where the next year's frontier is often visible eighteen months before the journals confirm it.
+      </p>
+      <p style="font-family:'Inter', sans-serif; font-size:17.5px; line-height:1.6; color:var(--ink); margin:0 0 26px">
+        If you are a returning author, thank you for shaping this community. If you are new, you are very welcome here. Browse the 25-year archive below, plan to join us in August for BIOKDD&nbsp;2026 on Digital&nbsp;Twins, and consider joining our LinkedIn group to stay in touch between editions.
+      </p>
+      <div style="padding-top:18px; border-top:1px solid var(--line)">
+        <div style="font-family:'Source Serif 4', serif; font-weight:700; font-size:17px; color:var(--ink); line-height:1.2">— Jake Y. Chen</div>
+        <div style="font-size:13.5px; color:var(--ink-2); margin-top:6px; line-height:1.5; max-width:680px">
+          Triton Endowed Professor of Biomedical Informatics and Data Science · Founding Director, Systems Pharmacology AI Research Center · <a href="https://www.aimed-lab.org/" target="_blank" rel="noopener" style="color:var(--brand); text-decoration:none; border-bottom:1px solid rgba(30,91,175,.4)">AIMed Lab</a>, The University of Alabama at Birmingham
+        </div>
+        <div style="font-size:12.5px; color:var(--muted); margin-top:8px; font-style:italic">on behalf of the BIOKDD organizing committee</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about">
+  <div class="wrap">
+    <div class="eyebrow">About BIOKDD</div>
+    <h2 class="serif">A field-defining forum where data&nbsp;mining and biomedicine meet.</h2>
+    <p class="deck">BIOKDD was founded in 2001 to give biomedical data-mining research a permanent home inside the world's flagship knowledge-discovery conference. Twenty-four editions later, it has tracked — and often led — every major wave of biomedical informatics: sequence motifs, microarrays, networks, NGS, deep learning, multi-omics, large language models, and now digital twins.</p>
+
+    <div class="grid">
+      <div class="pull serif">
+        "BIOKDD is where the data-mining community first encounters tomorrow's biology — and where biology first encounters tomorrow's data-mining methods."
+      </div>
+      <ul class="bullets">
+        <li><strong>One of the longest-running workshops at the ACM&nbsp;SIGKDD Conference</strong> — held annually since 2001, the only gap being 2009.</li>
+        <li><strong>Open to full papers, abstracts and late-breaking research</strong>, all selected through peer review.</li>
+        <li><strong>Selected works invited to a TCBB Special Issue</strong> — a tradition since 2008.</li>
+        <li><strong>A welcoming venue for new researchers</strong>: 50–100 attendees, oral presentation for every accepted submission.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PHASES ============ -->
+<section id="phases">
+  <div class="wrap">
+    <div class="eyebrow">A quarter-century in four phases</div>
+    <h2 class="serif">From sequence motifs to digital twins — four research eras at one workshop.</h2>
+    <p class="deck">Across 25 years, four distinct research phases emerge from the workshop's program. Each phase reflects what biology was producing — and what data-mining methods were ready to absorb.</p>
+
+    <div class="phase-grid">
+
+      <div class="phase" data-p="1">
+        <div class="badge">Phase I · 2001 – 2008</div>
+        <h3 class="serif">Founding era — classical KDD meets the genome</h3>
+        <p>The first eight years brought sequence motifs, microarray clustering, biclustering, frequent-pattern mining, classification of expression profiles, and the earliest gene/protein interaction studies into SIGKDD.</p>
+        <div class="tags">
+          <span class="tag">Sequence motifs</span>
+          <span class="tag">Microarrays</span>
+          <span class="tag">Frequent patterns</span>
+          <span class="tag">Biclustering</span>
+          <span class="tag">Protein structure</span>
+        </div>
+      </div>
+
+      <div class="phase" data-p="2">
+        <div class="badge">Phase II · 2010 – 2014</div>
+        <h3 class="serif">Networks & next-generation sequencing</h3>
+        <p>NGS reshaped the data, and networks reshaped the methods. Pathway mining, network medicine, disease-gene prediction, and the first wave of structured biomedical big-data made BIOKDD a meeting point for systems and computational biologists.</p>
+        <div class="tags">
+          <span class="tag">NGS</span>
+          <span class="tag">Network biology</span>
+          <span class="tag">Pathways</span>
+          <span class="tag">Disease genes</span>
+          <span class="tag">Predictive models</span>
+        </div>
+      </div>
+
+      <div class="phase" data-p="3">
+        <div class="badge">Phase III · 2015 – 2020</div>
+        <h3 class="serif">Deep learning & multimodal biomedicine</h3>
+        <p>Deep neural nets, single-cell omics, knowledge graphs, biomedical imaging, and electronic health records arrived together. BIOKDD became the place where the data-mining and biomedical-AI communities began to share a methodological vocabulary — culminating in the COVID-19 themed 2020 edition.</p>
+        <div class="tags">
+          <span class="tag">Deep learning</span>
+          <span class="tag">Multi-omics</span>
+          <span class="tag">Single-cell</span>
+          <span class="tag">Knowledge graphs</span>
+          <span class="tag">EHR mining</span>
+        </div>
+      </div>
+
+      <div class="phase" data-p="4">
+        <div class="badge">Phase IV · 2021 – 2026</div>
+        <h3 class="serif">GenAI, foundation models & digital twins</h3>
+        <p>The current era opens with AlphaFold and closes with patient digital twins. Workshop themes track the frontier in real time — AI in medicine (2021), large-scale ML (2023), LLMs in bioinformatics (2024), generative biomolecular design (2025), digital twins (2026).</p>
+        <div class="tags">
+          <span class="tag">LLMs</span>
+          <span class="tag">Foundation models</span>
+          <span class="tag">Generative design</span>
+          <span class="tag">Digital twins</span>
+          <span class="tag">Multimodal AI</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ TIMELINE ============ -->
+<section id="timeline">
+  <div class="wrap">
+    <div class="eyebrow">The 25-year archive</div>
+    <h2 class="serif">Every edition, one click away.</h2>
+    <p class="deck">Twenty-five years of programs, keynotes, organisers and proceedings. Click any year to open its workshop page at <span class="mono">biokdd.org/biokdd<i>XX</i>/</span>.</p>
+
+    <div class="tl-head">
+      <div class="tl-filter" role="group" aria-label="Filter by phase">
+        <button data-p="all" class="active">All editions</button>
+        <button data-p="1">Phase I · founding</button>
+        <button data-p="2">Phase II · networks &amp; NGS</button>
+        <button data-p="3">Phase III · deep learning</button>
+        <button data-p="4">Phase IV · GenAI &amp; twins</button>
+      </div>
+    </div>
+
+    <div class="tl-ribbon" aria-hidden="true">
+      <span></span><span></span><span></span><span></span>
+    </div>
+    <div class="tl-ribbon-labels" aria-hidden="true">
+      <span>2001 – 2008 · Founding</span>
+      <span>2010 – 2014 · Networks &amp; NGS</span>
+      <span>2015 – 2020 · Deep learning</span>
+      <span>2021 – 2026 · GenAI &amp; twins</span>
+    </div>
+
+    <div class="tl-grid" id="tl-grid"></div>
+  </div>
+</section>
+
+<!-- ============ ORGANIZERS ============ -->
+<section id="org">
+  <div class="wrap">
+    <div class="eyebrow">Steering &amp; founding committee</div>
+    <h2 class="serif">A small group of researchers has carried the workshop for 25 years.</h2>
+    <p class="deck">BIOKDD has been organised by a continuous chain of program and general chairs since 2001, with broad scientific program committees drawn from across academia, industry and government labs.</p>
+
+    <div class="org-grid">
+      <div class="person">
+        <div class="role">Sustained impact · since 2007</div>
+        <h3 class="serif">Jake Y. Chen</h3>
+        <div class="aff">Triton Endowed Professor of Biomedical Informatics and Data Science · Founding Director, Systems Pharmacology AI Research Center · The University of Alabama at Birmingham</div>
+        <p>Joined as program co-chair in 2007 and has been in a chair or steering role every year since. Brought the biology and systems-biology community into BIOKDD — broadening the workshop from a pure data-mining venue into a meeting point for biomedical informaticians, and the principal force behind the workshop's sustained scientific impact across its second and third decades.</p>
+        <a class="profile" href="https://www.aimed-lab.org/" target="_blank" rel="noopener">AIMed Lab · aimed-lab.org</a>
+      </div>
+
+      <div class="person">
+        <div class="role">Program &amp; publications · since 2017</div>
+        <h3 class="serif">Da Yan</h3>
+        <div class="aff">Associate Professor, Luddy School of Informatics, Computing, and Engineering · Indiana University Bloomington</div>
+        <p>Joined as program co-chair in 2017 and has run the workshop's program every year since. Established the IEEE/ACM TCBB Special Issue as a recurring BIOKDD tradition, ensuring that selected workshop papers are routed each year to a peer-reviewed journal venue — the workhorse behind the workshop's annual programmatic execution.</p>
+        <a class="profile" href="https://homes.luddy.indiana.edu/yanda/" target="_blank" rel="noopener">Faculty profile · luddy.indiana.edu</a>
+      </div>
+
+      <div class="person">
+        <div class="role">Founding general chair · steering since 2001</div>
+        <h3 class="serif">Mohammed J. Zaki</h3>
+        <div class="aff">Professor of Computer Science · Rensselaer Polytechnic Institute</div>
+        <p>Founded BIOKDD in 2001 and shaped its character through the workshop's foundational phases — the SIGKDD partnership, the open call for biological data-mining research, and the original program-committee network from which today's community grew. Has remained on the steering committee every year since, giving BIOKDD its continuous 25-year institutional memory.</p>
+        <a class="profile" href="https://www.cs.rpi.edu/~zaki/" target="_blank" rel="noopener">Faculty profile · cs.rpi.edu/~zaki</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THIS YEAR — CALL FOR PARTICIPATION ============ -->
+<section id="this-year">
+  <div class="wrap">
+    <div>
+      <div class="tag">BIOKDD 2026 · 25th edition · now open for participation</div>
+      <h2 class="serif">Join us this August: <span style="color:var(--p4)">Digital&nbsp;Twins</span> for biology and medicine.</h2>
+      <p style="font-size:17px; color:var(--ink-2); max-width:560px">Submissions are closed and the program is being finalized. We now invite the broader community to attend the workshop: a full day of peer-reviewed talks, an invited keynote, abstract spotlights and a late-breaking research session — all framed around digital twins for biology and medicine.</p>
+      <div class="meta">
+        <div><span class="lab">Workshop date</span> <span>Aug&nbsp;10&nbsp;2026</span></div>
+        <div><span class="lab">Venue</span> <span>with SIGKDD&nbsp;2026</span></div>
+        <div><span class="lab">Format</span> <span>Full-day, in-person</span></div>
+        <div><span class="lab">Status</span> <span>Submissions closed · program forthcoming</span></div>
+      </div>
+      <a class="cta" href="https://biokdd.org/biokdd26/">Register &amp; attend BIOKDD 2026 →</a>
+    </div>
+
+    <div>
+      <a href="https://biokdd.org/biokdd26/" style="display:block; border-radius:18px; overflow:hidden; box-shadow:var(--shadow); border:1px solid var(--line); margin-bottom:20px; background:#fff; text-decoration:none" aria-label="Open BIOKDD 2026 site">
+        <!-- Digital Twins themed inline SVG (no remote image dependency) -->
+        <svg viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg" style="display:block; width:100%; height:auto; background:linear-gradient(135deg, #0B1F33 0%, #143F7E 60%, #C0392B 130%)" aria-hidden="true">
+          <defs>
+            <radialGradient id="bg-glow" cx="50%" cy="50%" r="55%">
+              <stop offset="0" stop-color="#fff" stop-opacity=".10"/>
+              <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="cell-a" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#5ED4AC"/>
+              <stop offset="1" stop-color="#1E5BAF"/>
+            </linearGradient>
+            <linearGradient id="cell-b" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#F5B36A"/>
+              <stop offset="1" stop-color="#C0392B"/>
+            </linearGradient>
+          </defs>
+          <rect width="600" height="280" fill="url(#bg-glow)"/>
+
+          <!-- Left "real" cell -->
+          <g transform="translate(170,140)">
+            <circle r="78" fill="none" stroke="url(#cell-a)" stroke-width="2.5" opacity=".7"/>
+            <circle r="58" fill="url(#cell-a)" opacity=".18"/>
+            <circle r="14" fill="#5ED4AC" opacity=".85"/>
+            <g stroke="#5ED4AC" stroke-width="1.2" opacity=".7">
+              <line x1="0" y1="-58" x2="0" y2="-30"/>
+              <line x1="44" y1="-40" x2="22" y2="-22"/>
+              <line x1="55" y1="20" x2="28" y2="12"/>
+              <line x1="0" y1="58" x2="0" y2="30"/>
+              <line x1="-44" y1="40" x2="-22" y2="22"/>
+              <line x1="-55" y1="-20" x2="-28" y2="-12"/>
+            </g>
+            <g fill="#5ED4AC">
+              <circle cx="0" cy="-58" r="4"/>
+              <circle cx="44" cy="-40" r="4"/>
+              <circle cx="55" cy="20" r="4"/>
+              <circle cx="0" cy="58" r="4"/>
+              <circle cx="-44" cy="40" r="4"/>
+              <circle cx="-55" cy="-20" r="4"/>
+            </g>
+          </g>
+
+          <!-- Right "twin" cell -->
+          <g transform="translate(430,140)">
+            <circle r="78" fill="none" stroke="url(#cell-b)" stroke-width="2.5" stroke-dasharray="3 4" opacity=".85"/>
+            <circle r="58" fill="url(#cell-b)" opacity=".18"/>
+            <circle r="14" fill="#F08A7C" opacity=".85"/>
+            <g stroke="#F08A7C" stroke-width="1.2" opacity=".75">
+              <line x1="0" y1="-58" x2="0" y2="-30"/>
+              <line x1="44" y1="-40" x2="22" y2="-22"/>
+              <line x1="55" y1="20" x2="28" y2="12"/>
+              <line x1="0" y1="58" x2="0" y2="30"/>
+              <line x1="-44" y1="40" x2="-22" y2="22"/>
+              <line x1="-55" y1="-20" x2="-28" y2="-12"/>
+            </g>
+            <g fill="#F08A7C">
+              <circle cx="0" cy="-58" r="4"/>
+              <circle cx="44" cy="-40" r="4"/>
+              <circle cx="55" cy="20" r="4"/>
+              <circle cx="0" cy="58" r="4"/>
+              <circle cx="-44" cy="40" r="4"/>
+              <circle cx="-55" cy="-20" r="4"/>
+            </g>
+          </g>
+
+          <!-- bridge of data flow -->
+          <g stroke="#9DBCEC" stroke-width="1" opacity=".55" stroke-dasharray="4 4">
+            <path d="M 252 110 Q 300 90, 348 110" fill="none"/>
+            <path d="M 252 140 Q 300 140, 348 140" fill="none"/>
+            <path d="M 252 170 Q 300 190, 348 170" fill="none"/>
+          </g>
+          <g fill="#9DBCEC">
+            <circle cx="252" cy="110" r="3"/><circle cx="348" cy="110" r="3"/>
+            <circle cx="252" cy="140" r="3"/><circle cx="348" cy="140" r="3"/>
+            <circle cx="252" cy="170" r="3"/><circle cx="348" cy="170" r="3"/>
+          </g>
+
+          <!-- corner labels -->
+          <text x="100" y="42" font-family="'JetBrains Mono', monospace" font-size="11" fill="#5ED4AC" letter-spacing="2">PATIENT</text>
+          <text x="500" y="42" font-family="'JetBrains Mono', monospace" font-size="11" fill="#F08A7C" letter-spacing="2" text-anchor="end">DIGITAL TWIN</text>
+
+          <text x="300" y="248" text-anchor="middle" font-family="'Source Serif 4', serif" font-weight="700" font-size="22" fill="#FBF7F0">BIOKDD 2026 · Digital Twins</text>
+          <text x="300" y="266" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#9DBCEC" letter-spacing="1.5">25th INTERNATIONAL WORKSHOP ON DATA MINING IN BIOINFORMATICS</text>
+        </svg>
+        <div style="padding:14px 18px; font-family:'JetBrains Mono', monospace; font-size:11.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--line)">
+          <span>BIOKDD 2026 · workshop preview</span>
+          <span style="color:var(--p4); font-weight:700">Visit site →</span>
+        </div>
+      </a>
+      <div class="tracks">
+        <h4 class="serif">What to expect on the day</h4>
+        <ul>
+          <li><span class="k">Talks</span><span><strong>Regular workshop papers</strong> — full-length peer-reviewed talks, with selected works invited to the BIOKDD Special Issue with IEEE/ACM TCBB.</span></li>
+          <li><span class="k">Abs</span><span><strong>Abstract spotlights</strong> — short oral presentations of preliminary research and ongoing collaborations.</span></li>
+          <li><span class="k">LBR</span><span><strong>Late-breaking research</strong> — published or exceptionally high-impact recent work, in a dedicated oral session.</span></li>
+          <li><span class="k">Key</span><span><strong>Invited keynote</strong> on digital twins for biomedicine, plus a moderated discussion with the program chairs.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMMUNITY ============ -->
+<section id="community" style="background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="eyebrow">Stay connected</div>
+    <h2 class="serif">Twenty-five years, 1,800+ contributors.</h2>
+    <p class="deck">Across 25 editions, more than 1,800 researchers have been part of BIOKDD as authors, reviewers, program-committee members, keynote speakers, and attendees. Our LinkedIn group is the smaller, active online hub where this community stays in touch between editions.</p>
+    <div style="display:grid; grid-template-columns:1.2fr 1fr; gap:32px; align-items:center">
+      <div style="background:#fff; border:1px solid var(--line); border-radius:18px; padding:30px 32px; box-shadow:var(--shadow); display:flex; gap:22px; align-items:center">
+        <!-- LinkedIn glyph -->
+        <svg viewBox="0 0 64 64" width="68" height="68" aria-hidden="true" style="flex-shrink:0">
+          <rect x="2" y="2" width="60" height="60" rx="10" fill="#0A66C2"/>
+          <text x="32" y="44" text-anchor="middle" font-family="Inter, sans-serif" font-weight="700" font-size="32" fill="#fff">in</text>
+        </svg>
+        <div>
+          <div style="font-family:'JetBrains Mono', monospace; font-size:11.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); font-weight:600; margin-bottom:4px">LinkedIn group · the online hub</div>
+          <div style="font-family:'Source Serif 4', serif; font-weight:700; font-size:22px; color:var(--ink); margin-bottom:6px">Biokdd — Data Mining in Bioinformatics</div>
+          <div style="font-size:14.5px; color:var(--ink-2); margin-bottom:14px; line-height:1.5">A small but active group of BIOKDD authors, reviewers, program-committee members, and adjacent researchers in the data-mining × bioinformatics space.</div>
+          <a href="https://www.linkedin.com/groups/3825744/" style="display:inline-flex; align-items:center; gap:8px; background:#0A66C2; color:#fff; padding:11px 20px; border-radius:999px; text-decoration:none; font-weight:600; font-size:14.5px">Join the BIOKDD group on LinkedIn →</a>
+        </div>
+      </div>
+      <ul style="list-style:none; margin:0; padding:0; display:grid; gap:14px">
+        <li style="display:grid; grid-template-columns:32px 1fr; gap:14px; font-size:15px; color:var(--ink-2); align-items:start">
+          <span style="font-family:'JetBrains Mono', monospace; color:var(--brand); font-weight:700">01</span>
+          <span><strong style="color:var(--ink)">Annual calls for papers</strong> are announced first in the group every spring.</span>
+        </li>
+        <li style="display:grid; grid-template-columns:32px 1fr; gap:14px; font-size:15px; color:var(--ink-2); align-items:start">
+          <span style="font-family:'JetBrains Mono', monospace; color:var(--p2); font-weight:700">02</span>
+          <span><strong style="color:var(--ink)">TCBB Special Issue notifications</strong> with submission deadlines and editorial guidance.</span>
+        </li>
+        <li style="display:grid; grid-template-columns:32px 1fr; gap:14px; font-size:15px; color:var(--ink-2); align-items:start">
+          <span style="font-family:'JetBrains Mono', monospace; color:var(--p3); font-weight:700">03</span>
+          <span><strong style="color:var(--ink)">Post-workshop discussion</strong>, slides, and recordings shared by program chairs and authors.</span>
+        </li>
+        <li style="display:grid; grid-template-columns:32px 1fr; gap:14px; font-size:15px; color:var(--ink-2); align-items:start">
+          <span style="font-family:'JetBrains Mono', monospace; color:var(--p4); font-weight:700">04</span>
+          <span><strong style="color:var(--ink)">Job posts &amp; collaboration requests</strong> from the bioinformatics-AI community.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <div>
+        <h5 class="serif">BIOKDD</h5>
+        <p style="font-size:14px; max-width:340px; color:#A7B7CB; margin:0">The annual International Workshop on Data Mining in Bioinformatics, held with ACM&nbsp;SIGKDD since 2001.</p>
+      </div>
+      <div>
+        <h5 class="serif">Editions</h5>
+        <ul>
+          <li><a href="https://biokdd.org/biokdd26/">BIOKDD 2026 — Digital Twins</a></li>
+          <li><a href="https://biokdd.org/biokdd25/">BIOKDD 2025 — GenAI biomolecules</a></li>
+          <li><a href="https://biokdd.org/biokdd24/">BIOKDD 2024 — LLMs &amp; GenAI</a></li>
+          <li><a href="#timeline">Browse all 25 years →</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="serif">Workshop</h5>
+        <ul>
+          <li><a href="#about">About BIOKDD</a></li>
+          <li><a href="#phases">25-year history</a></li>
+          <li><a href="#org">Organizers</a></li>
+          <li><a href="https://kdd2026.kdd.org">SIGKDD 2026</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="serif">Publication</h5>
+        <ul>
+          <li><a href="https://www.computer.org/web/tcbb">IEEE/ACM TCBB Special Issue</a></li>
+          <li><a href="#">Past proceedings (ACM DL)</a></li>
+          <li><a href="https://www.facebook.com/biokdd">Facebook</a></li>
+          <li><a href="https://www.linkedin.com/groups/3825744">LinkedIn group</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <div>© 2001 – 2026 BIOKDD Workshop · ACM SIGKDD</div>
+      <div>Maintained by the BIOKDD steering committee</div>
+    </div>
+  </div>
+</footer>
+
+<!-- =====================================================================
+   YEAR DATA + TIMELINE JS
+   ---------------------------------------------------------------------
+   Year data is in ./data/years.js — edit THAT file to add a new edition.
+   This block only handles rendering and filter UI.
+===================================================================== -->
+<script src="./data/years.js"></script>
+<script>
+const YEARS = window.BIOKDD_YEARS || [];
+
+const grid = document.getElementById('tl-grid');
+YEARS.forEach(y => {
+  const a = document.createElement('a');
+  a.className = 'year' + (y.skip?' skip':'') + (y.current?' current':'');
+  a.href = y.url;
+  a.dataset.p = y.phase;
+  a.dataset.year = y.y;
+  a.setAttribute('aria-label', `BIOKDD ${y.y}: ${y.theme}`);
+  a.innerHTML = `
+    <div class="hd">
+      <div class="yr">${y.y}</div>
+      <div class="ord">${y.n}</div>
+    </div>
+    <div class="loc">📍 ${y.loc}</div>
+    <div class="theme">${y.theme}</div>`;
+  grid.appendChild(a);
+});
+
+// phase filter
+document.querySelectorAll('.tl-filter button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const p = btn.dataset.p;
+    document.querySelectorAll('.tl-filter button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('a.year').forEach(card => {
+      if (p === 'all' || card.dataset.p === p) {
+        card.classList.remove('dim');
+      } else {
+        card.classList.add('dim');
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>

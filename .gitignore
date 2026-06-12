@@ -1,0 +1,22 @@
+# macOS junk
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editor scratch
+*.swp
+*~
+.vscode/
+.idea/
+
+# Cloudflare Pages build output (we don't have one, but just in case)
+.cloudflare/
+dist/
+build/
+
+# Local-dev caches
+node_modules/
+.cache/
+
+# Test outputs
+*.log
