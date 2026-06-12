@@ -20,3 +20,10 @@ node_modules/
 
 # Test outputs
 *.log
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
