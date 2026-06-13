@@ -6,87 +6,83 @@
 <meta name="description" content="4th International Workshop on Data Mining in Bioinformatics (August 2004, Seattle, Washington, USA).">
 <style>
   body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Times New Roman', Times, serif;
     background: #FFFFFF;
     color: #000000;
-    max-width: 760px;
-    margin: 30px auto;
+    max-width: 720px;
+    margin: 22px auto;
     padding: 0 18px;
-    font-size: 14px;
-    line-height: 1.55;
+    font-size: 15px;
+    line-height: 1.45;
   }
-  h1 {
-    color: #003366;
-    border-bottom: 2px solid #003366;
-    padding-bottom: 8px;
-    font-size: 22px;
-    margin: 0 0 6px;
+  h1.title {
+    font-size: 24px;
+    text-align: center;
+    margin: 14px 0 2px;
+    color: #000;
   }
-  h2 {
-    color: #003366;
-    font-size: 16px;
-    border-bottom: 1px solid #BFCBD9;
-    padding-bottom: 4px;
-    margin-top: 28px;
+  h2.subtitle {
+    font-size: 18px;
+    text-align: center;
+    font-weight: normal;
+    font-style: italic;
+    margin: 0 0 14px;
+    color: #333;
   }
-  h3 { color: #003366; font-size: 14px; margin: 18px 0 8px; }
-  h4 { color: #003366; font-size: 13.5px; margin: 14px 0 4px; }
+  .meta-block {
+    text-align: center;
+    margin: 0 0 14px;
+    font-size: 14.5px;
+  }
+  .meta-block .date { font-weight: bold; }
+  .conjunction { text-align: center; font-size: 13.5px; margin: 6px 0 16px; color: #333; }
+  .conjunction em { font-style: italic; }
+  .proceedings { text-align: center; font-size: 13.5px; margin: 4px 0 22px; color: #222; }
+  hr { border: none; border-top: 1px solid #BBB; margin: 22px 0 16px; }
+  h3 { font-size: 16px; margin: 22px 0 8px; color: #000; font-weight: bold; }
+  h4 { font-size: 14.5px; margin: 14px 0 4px; color: #222; font-weight: bold; font-style: italic; }
   a { color: #0000EE; text-decoration: underline; }
   a:visited { color: #551A8B; }
-  table.meta {
-    border-collapse: collapse;
-    margin: 12px 0 18px;
-    background: #F5F7FA;
-    border: 1px solid #BFCBD9;
-    width: 100%;
-  }
-  table.meta td {
-    padding: 5px 10px;
-    border-bottom: 1px solid #E1E6EE;
-    vertical-align: top;
-  }
-  table.meta td.label {
-    color: #555;
-    font-weight: bold;
-    width: 130px;
-    background: #EEF2F7;
-  }
-  ol, ul { padding-left: 22px; margin: 4px 0 10px; }
-  ol li, ul li { margin-bottom: 5px; }
-  p { margin: 6px 0; }
-  .note { background: #FFFCE0; border-left: 3px solid #C99A3A; padding: 8px 12px; margin: 14px 0; }
-  .nav { font-size: 12px; color: #555; margin: 20px 0 22px; }
-  .nav a { margin-right: 12px; }
+  ul, ol { padding-left: 24px; margin: 4px 0 12px; }
+  ul li, ol li { margin-bottom: 6px; }
+  p { margin: 8px 0; }
+  .keynote-list li { list-style: none; margin-left: -22px; padding-left: 0; margin-bottom: 12px; }
+  .keynote-list b { text-transform: uppercase; }
+  .note { font-style: italic; color: #444; margin: 14px 0; padding-left: 14px; border-left: 2px solid #BBB; }
+  .nav-top, .nav-bottom { font-size: 12px; color: #555; margin: 14px 0; text-align: center; }
+  .nav-top a, .nav-bottom a { margin: 0 8px; }
   .footer {
-    margin-top: 40px;
+    margin-top: 36px;
     padding-top: 14px;
-    border-top: 1px solid #BFCBD9;
-    color: #777;
+    border-top: 1px solid #999;
+    color: #555;
     font-size: 12px;
+    text-align: center;
   }
-  .lead { font-style: italic; color: #444; margin-top: -2px; margin-bottom: 14px; }
+  .maintained { text-align: center; font-size: 12px; color: #555; margin: 26px 0 8px; font-style: italic; }
   .year-strip {
-    margin: 6px 0 26px; padding: 10px 12px;
-    background: #EEF2F7; border: 1px solid #BFCBD9; border-radius: 4px;
+    margin: 8px 0 22px; padding: 8px 10px;
+    border: 1px solid #BBB;
     font-family: 'Courier New', monospace; font-size: 11.5px;
     display: flex; flex-wrap: wrap; gap: 2px;
     line-height: 1.2;
+    background: #F8F8F0;
   }
   .ys-cell {
-    padding: 3px 6px; border-radius: 3px; text-decoration: none;
-    color: #0000EE; background: #fff; border: 1px solid #D7DEEA;
-    font-weight: 600;
+    padding: 3px 6px; text-decoration: none;
+    color: #0000EE; background: #fff; border: 1px solid #CCC;
+    font-weight: bold;
   }
-  .ys-cell:hover { background: #DEE7F2; }
-  .ys-current { background: #003366; color: #fff; border-color: #003366; }
+  .ys-cell:hover { background: #FFFCE0; }
+  .ys-current { background: #000; color: #fff; border-color: #000; }
   .ys-skip { color: #999; background: repeating-linear-gradient(45deg,#F4F1E0,#F4F1E0 3px,#EEE 3px,#EEE 6px); cursor: not-allowed; }
-  .year-strip-label { font-size: 10.5px; letter-spacing:.05em; text-transform:uppercase; color:#555; margin-right:8px; align-self:center }
+  .year-strip-label { font-size: 10.5px; letter-spacing:.05em; text-transform:uppercase; color:#555; margin-right:8px; align-self:center; font-family:'Times New Roman', serif }
 </style>
 </head>
 <body>
 
-<div class="nav">
-  <a href="../">&laquo; BIOKDD 25-year archive (home)</a>
+<div class="nav-top">
+  <a href="../">&laquo; BIOKDD 25-year archive</a> &middot;
   <a href="https://biokdd.org/biokdd26/">Current workshop: BIOKDD 2026 &rarr;</a>
 </div>
 
@@ -120,29 +116,39 @@
 <a class="ys-cell" href="https://biokdd.org/biokdd26/" title="BIOKDD 2026 · 25th">2026</a>
 </div>
 
-<h1>BIOKDD&nbsp;2004 &mdash; 4th International Workshop on Data Mining in Bioinformatics</h1>
-<p class="lead">Open call — first transition in chair leadership</p>
+<h1 class="title">BIOKDD, 2004</h1>
+<h2 class="subtitle">4th Workshop on Data Mining in Bioinformatics</h2>
 
-<table class="meta">
-  <tr><td class="label">Date</td><td>August 2004</td></tr>
-  <tr><td class="label">Location</td><td>Seattle, Washington, USA</td></tr>
-  <tr><td class="label">Held with</td><td>10th ACM SIGKDD International Conference</td></tr>
-  <tr><td class="label">Theme</td><td>Open call — first transition in chair leadership</td></tr>
-</table>
+<div class="meta-block">
+  <div class="date">August 2004</div>
+  <div>Seattle, Washington, USA</div>
+</div>
 
-<h2>Organization</h2>
+<div class="conjunction">
+  in conjunction with<br>
+  <em>10th ACM SIGKDD International Conference</em>
+</div>
 
-<h3>Workshop Co-Chairs (Wang &amp; Toivonen rotate out after three years)</h3>
+<div class="proceedings">
+  Proceedings of the 4th ACM SIGKDD Workshop on Data Mining in Bioinformatics — edited by Mohammed J. Zaki, Shinichi Morishita, Isidore Rigoutsos.<br>
+  <span style="color:#666">Theme: Open call — first transition in chair leadership</span>
+</div>
+
+<hr>
+
+<h3>Organization</h3>
+
+<p><b>Workshop Co-Chairs (Wang &amp; Toivonen rotate out after three years)</b></p>
 <p><b>Mohammed J. Zaki</b><br>Rensselaer Polytechnic Institute<br>Email: <a href="mailto:zaki@cs.rpi.edu">zaki@cs.rpi.edu</a></p>
 <p><b>Shinichi Morishita</b><br>University of Tokyo</p>
 <p><b>Isidore Rigoutsos</b><br>IBM Thomas J. Watson Research Center</p>
 
-<h2>Invited / Keynote Speakers</h2>
+<h3>Invited / Keynote Speakers</h3>
 <ul class="keynote-list">
 <li><b>Mark Boguski</b>, Allen Institute for Brain Science / Fred Hutchinson / U Washington<br><i>"Data mining challenges in the Allen Brain Atlas project"</i></li>
 </ul>
 
-<h2>Program &mdash; Accepted Papers</h2>
+<h3>Program — Accepted Papers</h3>
 <p><i>10 contributed papers (6 long + 4 short) out of 26 submissions (38.5% acceptance) · 1 keynote · 4 sessions</i></p>
 <h4>Long papers</h4>
 <ol>
@@ -165,17 +171,17 @@
 <h3>Program Committee</h3>
 <p>24 members (Srinivas Aluru, Alberto Apostolico, Tatsuya Akutsu, Charles Elkan, Jayant Haritsa, Hasan Jamil, Andreas Karwath, George Karypis, Ross D. King, Jinyan Li, Lance A. Liotta, Ambuj Singh, David Page, Srinivasan Parthasarathy, Jignesh M. Patel, Daniel E. Platt, Luc De Raedt, Tobias Scheffer, Karlton Sequeira, Hannu Toivonen, Jason Wang, Wei Wang, Jiong Yang, Aidong Zhang).</p>
 
-<h2>Publication</h2>
+<h3>Publication</h3>
 <p>Online proceedings originally at RPI (defunct). Workshop report in SIGKDD Explorations Vol. 6, Issue 2.</p>
 
 <p class="note"><i>Jake Y. Chen's first BIOKDD paper appeared in this edition as a short talk — he would join the chair rotation three years later.</i></p>
 
+<div class="maintained">
+  Originally maintained by Mohammed J. Zaki, Rensselaer Polytechnic Institute.<br>
+  This page is a clean reconstruction preserving the original workshop record.
+</div>
+
 <div class="footer">
-  This page is a retroactive reconstruction of the BIOKDD&nbsp;2004 workshop
-  archive, assembled from the SIGKDD Explorations workshop reports, the
-  BIOKDD steering-committee records, and preserved local proceedings PDFs.
-  The original workshop site has gone defunct over time.
-  <br>
   &copy; 2001&ndash;2026 BIOKDD Workshop Series &middot;
   <a href="../">biokdd.org</a> &middot;
   <a href="https://github.com/jakechen1/biokdd">source on GitHub</a>
