@@ -55,8 +55,8 @@
   ol li, ul li { margin-bottom: 5px; }
   p { margin: 6px 0; }
   .note { background: #FFFCE0; border-left: 3px solid #C99A3A; padding: 8px 12px; margin: 14px 0; }
-  .nav { font-size: 12px; color: #555; margin: 20px 0 30px; }
-  .nav a { margin-right: 10px; }
+  .nav { font-size: 12px; color: #555; margin: 20px 0 22px; }
+  .nav a { margin-right: 12px; }
   .footer {
     margin-top: 40px;
     padding-top: 14px;
@@ -65,14 +65,59 @@
     font-size: 12px;
   }
   .lead { font-style: italic; color: #444; margin-top: -2px; margin-bottom: 14px; }
+  .year-strip {
+    margin: 6px 0 26px; padding: 10px 12px;
+    background: #EEF2F7; border: 1px solid #BFCBD9; border-radius: 4px;
+    font-family: 'Courier New', monospace; font-size: 11.5px;
+    display: flex; flex-wrap: wrap; gap: 2px;
+    line-height: 1.2;
+  }
+  .ys-cell {
+    padding: 3px 6px; border-radius: 3px; text-decoration: none;
+    color: #0000EE; background: #fff; border: 1px solid #D7DEEA;
+    font-weight: 600;
+  }
+  .ys-cell:hover { background: #DEE7F2; }
+  .ys-current { background: #003366; color: #fff; border-color: #003366; }
+  .ys-skip { color: #999; background: repeating-linear-gradient(45deg,#F4F1E0,#F4F1E0 3px,#EEE 3px,#EEE 6px); cursor: not-allowed; }
+  .year-strip-label { font-size: 10.5px; letter-spacing:.05em; text-transform:uppercase; color:#555; margin-right:8px; align-self:center }
 </style>
 </head>
 <body>
 
 <div class="nav">
-  <a href="../">&laquo; BIOKDD home</a>
-  <a href="https://biokdd.org/">biokdd.org</a>
-  <a href="https://biokdd.org/biokdd26/">BIOKDD 2026 (current)</a>
+  <a href="../">&laquo; BIOKDD 25-year archive (home)</a>
+  <a href="https://biokdd.org/biokdd26/">Current workshop: BIOKDD 2026 &rarr;</a>
+</div>
+
+<div class="year-strip">
+  <span class="year-strip-label">Browse other years:</span>
+  <a class="ys-cell" href="../biokdd01/" title="BIOKDD 2001 · 1st">2001</a>
+<a class="ys-cell" href="../biokdd02/" title="BIOKDD 2002 · 2nd">2002</a>
+<a class="ys-cell" href="../biokdd03/" title="BIOKDD 2003 · 3rd">2003</a>
+<a class="ys-cell" href="../biokdd04/" title="BIOKDD 2004 · 4th">2004</a>
+<a class="ys-cell" href="../biokdd05/" title="BIOKDD 2005 · 5th">2005</a>
+<a class="ys-cell" href="../biokdd06/" title="BIOKDD 2006 · 6th">2006</a>
+<a class="ys-cell" href="../biokdd07/" title="BIOKDD 2007 · 7th">2007</a>
+<a class="ys-cell" href="../biokdd08/" title="BIOKDD 2008 · 8th">2008</a>
+<span class="ys-cell ys-skip" title="not held">2009</span>
+<a class="ys-cell" href="../biokdd10/" title="BIOKDD 2010 · 9th">2010</a>
+<a class="ys-cell" href="../biokdd11/" title="BIOKDD 2011 · 10th">2011</a>
+<a class="ys-cell" href="../biokdd12/" title="BIOKDD 2012 · 11th">2012</a>
+<a class="ys-cell" href="../biokdd13/" title="BIOKDD 2013 · 12th">2013</a>
+<a class="ys-cell" href="../biokdd14/" title="BIOKDD 2014 · 13th">2014</a>
+<a class="ys-cell" href="../biokdd15/" title="BIOKDD 2015 · 14th">2015</a>
+<span class="ys-cell ys-current">2016</span>
+<a class="ys-cell" href="https://biokdd.org/biokdd17/" title="BIOKDD 2017 · 16th">2017</a>
+<a class="ys-cell" href="https://biokdd.org/biokdd18/" title="BIOKDD 2018 · 17th">2018</a>
+<a class="ys-cell" href="https://biokdd.org/biokdd19/" title="BIOKDD 2019 · 18th">2019</a>
+<a class="ys-cell" href="https://biokdd.org/biokdd20/" title="BIOKDD 2020 · 19th">2020</a>
+<a class="ys-cell" href="https://biokdd.org/biokdd21/" title="BIOKDD 2021 · 20th">2021</a>
+<a class="ys-cell" href="https://biokdd.org/biokdd22/" title="BIOKDD 2022 · 21st">2022</a>
+<a class="ys-cell" href="https://biokdd.org/biokdd23/" title="BIOKDD 2023 · 22nd">2023</a>
+<a class="ys-cell" href="https://biokdd.org/biokdd24/" title="BIOKDD 2024 · 23rd">2024</a>
+<a class="ys-cell" href="https://biokdd.org/biokdd25/" title="BIOKDD 2025 · 24th">2025</a>
+<a class="ys-cell" href="https://biokdd.org/biokdd26/" title="BIOKDD 2026 · 25th">2026</a>
 </div>
 
 <h1>BIOKDD&nbsp;2016 &mdash; 15th International Workshop on Data Mining in Bioinformatics</h1>
@@ -132,8 +177,9 @@
   BIOKDD steering-committee records, and preserved local proceedings PDFs.
   The original workshop site has gone defunct over time.
   <br>
-  &copy; 2001&ndash;2016 BIOKDD Workshop Series &middot;
-  <a href="https://biokdd.org/">biokdd.org</a>
+  &copy; 2001&ndash;2026 BIOKDD Workshop Series &middot;
+  <a href="../">biokdd.org</a> &middot;
+  <a href="https://github.com/jakechen1/biokdd">source on GitHub</a>
 </div>
 
 </body>
