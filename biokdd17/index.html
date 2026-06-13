@@ -3,362 +3,406 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BIOKDD'17</title>
-<meta name="description" content="16th International Workshop on Data Mining in Bioinformatics, held with ACM SIGKDD 2017 in Halifax, Nova Scotia, Canada, August 14, 2017.">
+<title>BIOKDD 2017 — 16th International Workshop on Data Mining in Bioinformatics</title>
+<meta name="description" content="16th International Workshop on Data Mining in Bioinformatics. August 14, 2017 · Halifax, Nova Scotia, Canada. Held in conjunction with ACM SIGKDD 2017.">
 <style>
-  :root {
+  :root{
     --ink:#0B1F33;
     --muted:#5C6B7A;
     --accent:#1E5BAF;
     --accent-dark:#143F7E;
-    --paper:#FAF8F2;
+    --paper:#FBF7F0;
     --line:#D7CFBE;
     --card:#FFFFFF;
-    --highlight:#F5E9D5;
   }
   *{box-sizing:border-box}
   body{
     margin:0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
     background:var(--paper);
     color:var(--ink);
-    line-height:1.55;
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+    line-height:1.6;
     font-size:15.5px;
   }
-  .container{max-width:1080px; margin:0 auto; padding:0 24px}
+  .container{max-width:820px; margin:0 auto; padding:0 24px}
+  h1,h2,h3,h4{font-family:'Source Serif 4',Georgia,'Times New Roman',serif; color:var(--ink); letter-spacing:-.01em}
+  a{color:var(--accent); text-decoration:none}
+  a:hover{text-decoration:underline}
 
-  /* Header */
-  header.site{
+  /* Title block */
+  .titleblock{
     background:#fff;
     border-bottom:1px solid var(--line);
-    padding:18px 0;
-  }
-  header.site .row{
-    display:flex; align-items:center; justify-content:space-between; gap:24px;
-    flex-wrap:wrap;
-  }
-  header.site .brand a{color:inherit; text-decoration:none}
-  header.site .logo{
-    display:flex; align-items:center; gap:14px;
-  }
-  header.site .logo .markbox{
-    width:60px; height:60px; flex-shrink:0;
-    background:var(--accent);
-    color:#fff; border-radius:8px;
-    display:flex; align-items:center; justify-content:center;
-    font-family:'Source Serif 4', Georgia, serif;
-    font-weight:700; font-size:18px; line-height:1;
+    padding:42px 0 32px;
     text-align:center;
   }
-  header.site .logo .markbox span{display:block; font-size:11px; opacity:.85}
-  header.site .title-block .edition{
-    font-size:12.5px; letter-spacing:.10em; text-transform:uppercase;
-    color:var(--accent-dark); font-weight:700; margin-bottom:2px;
+  .titleblock .edition{
+    font-size:12.5px; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--accent-dark); font-weight:700; margin-bottom:10px;
   }
-  header.site .title-block h1{
-    margin:0; font-size:18px; font-weight:600; color:var(--ink); line-height:1.2;
+  .titleblock h1{
+    margin:0 0 8px; font-size:34px; font-weight:700; line-height:1.15;
   }
-  header.site .conjunction{
-    font-size:13px; color:var(--muted); margin-top:4px;
+  .titleblock .subtitle{
+    font-size:16.5px; color:var(--muted); font-style:italic;
+    margin-bottom:18px;
   }
-  header.site .conjunction a{color:var(--accent); text-decoration:none}
-
-  /* Nav */
-  nav.main{
-    background:var(--ink); color:#fff;
+  .titleblock .where-when{
+    font-size:15px; color:var(--ink);
   }
-  nav.main ul{
-    list-style:none; margin:0; padding:0;
-    display:flex; flex-wrap:wrap;
+  .titleblock .where-when strong{font-weight:600}
+  .titleblock .conjunction{
+    font-size:14px; color:var(--muted); margin-top:6px;
   }
-  nav.main li a{
-    display:block; padding:13px 18px;
-    color:#fff; text-decoration:none;
-    font-size:14px; font-weight:500;
-    border-right:1px solid rgba(255,255,255,.10);
-  }
-  nav.main li a:hover{background:var(--accent)}
-  nav.main li.current a{background:var(--accent)}
-
-  /* Cover band */
-  .cover{
-    background:linear-gradient(135deg, #143F7E 0%, #1E5BAF 50%, #2E7BD6 100%);
-    color:#fff;
-    padding:46px 0 50px;
-    position:relative;
-    overflow:hidden;
-  }
-  .cover::before{
-    content:''; position:absolute; inset:0;
-    background-image:
-      radial-gradient(circle at 20% 30%, rgba(255,255,255,.10), transparent 40%),
-      radial-gradient(circle at 80% 70%, rgba(255,255,255,.08), transparent 50%);
-    pointer-events:none;
-  }
-  .cover .container{position:relative}
-  .cover .badge{
-    display:inline-block; padding:5px 12px;
-    background:rgba(255,255,255,.18); border-radius:999px;
-    font-size:12px; font-weight:600; letter-spacing:.08em; text-transform:uppercase;
-    margin-bottom:14px;
-  }
-  .cover h2{
-    margin:0 0 14px; font-size:34px; font-weight:700; line-height:1.15;
-    font-family:'Source Serif 4', Georgia, serif;
-    letter-spacing:-.01em;
-    max-width:780px;
-  }
-  .cover .when-where{
-    font-size:16px; opacity:.95;
-  }
-  .cover .when-where strong{font-weight:600}
-
-  /* Main */
-  main{padding:42px 0 30px}
-  main .grid{
-    display:grid; grid-template-columns:1.6fr 1fr; gap:36px;
-  }
-  @media (max-width: 860px){
-    main .grid{grid-template-columns:1fr; gap:28px}
-  }
-  main h2{
-    font-family:'Source Serif 4', Georgia, serif;
-    font-size:24px; font-weight:700; color:var(--ink);
-    margin:0 0 12px;
-  }
-  main h3{
-    font-size:16px; font-weight:600; color:var(--accent-dark);
-    margin:22px 0 8px;
-  }
-  main p{margin:8px 0 14px}
-  main a{color:var(--accent); text-decoration:none}
-  main a:hover{text-decoration:underline}
-
-  /* Sidebar card */
-  aside .card{
-    background:var(--card); border:1px solid var(--line);
-    border-radius:10px; padding:22px 24px; margin-bottom:18px;
-  }
-  aside h3{
-    margin:0 0 14px; font-size:14.5px;
-    text-transform:uppercase; letter-spacing:.08em;
-    color:var(--accent-dark); font-weight:700;
-  }
-  aside ul{list-style:none; padding:0; margin:0; display:grid; gap:9px}
-  aside li{font-size:14.5px}
-  aside li .date{font-weight:600; color:var(--ink); display:block}
-  aside li .label{font-size:12.5px; color:var(--muted)}
-  aside .cta{
-    display:block; background:var(--accent); color:#fff;
-    text-align:center; padding:11px; border-radius:8px;
-    font-weight:600; font-size:14px; margin-top:10px;
-  }
-  aside .cta:hover{background:var(--accent-dark); text-decoration:none}
-
-  /* Topic chips */
-  .chips{display:flex; flex-wrap:wrap; gap:6px; margin:10px 0 16px}
-  .chips span{
-    display:inline-block; padding:4px 10px; border-radius:999px;
-    background:#EEF2F7; color:var(--ink); font-size:12.5px;
+  .titleblock .theme{
+    display:inline-block; margin-top:20px; padding:8px 16px;
+    background:#F0F3F8; color:var(--accent-dark);
+    border-radius:999px; font-size:14px; font-weight:600;
   }
 
-  /* Past Workshops band */
-  .past{
-    background:var(--card); border-top:1px solid var(--line); border-bottom:1px solid var(--line);
-    padding:30px 0;
+  section{padding:36px 0; border-bottom:1px solid var(--line)}
+  section:last-of-type{border-bottom:none}
+  section h2{
+    margin:0 0 16px; font-size:24px; font-weight:700;
+    color:var(--accent-dark);
   }
-  .past h3{margin:0 0 14px; font-size:14.5px; text-transform:uppercase; letter-spacing:.08em; color:var(--accent-dark); font-weight:700}
-  .past .year-grid{
-    display:flex; flex-wrap:wrap; gap:6px;
+  section h3{
+    margin:24px 0 8px; font-size:18px; font-weight:600;
   }
-  .past a.yr{
-    display:inline-block; padding:5px 10px; font-size:13px;
-    background:#fff; border:1px solid var(--line); border-radius:6px;
-    color:var(--accent); text-decoration:none; font-weight:600;
-    font-family:'JetBrains Mono', ui-monospace, Menlo, monospace;
+
+  /* Schedule */
+  .schedule{list-style:none; padding:0; margin:0}
+  .schedule li{
+    display:grid;
+    grid-template-columns:108px 1fr;
+    gap:18px;
+    padding:11px 0;
+    border-bottom:1px dotted var(--line);
   }
-  .past a.yr:hover{background:var(--accent); color:#fff; border-color:var(--accent)}
-  .past a.yr.current{background:var(--ink); color:#fff; border-color:var(--ink)}
-  .past a.yr.skip{opacity:.4; cursor:not-allowed}
+  .schedule li:last-child{border-bottom:none}
+  .schedule .time{
+    font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;
+    color:var(--accent-dark); font-size:13.5px; font-weight:600;
+    padding-top:2px;
+  }
+  .schedule .what{font-size:15.5px}
+  .schedule .what em{display:block; color:var(--muted); font-size:14px; font-style:normal; margin-top:2px}
+  .schedule .keynote, .schedule .break{font-weight:600}
+  .schedule .keynote{color:var(--accent-dark)}
+  .schedule .break{color:var(--muted); font-style:italic}
+
+  /* Keynote card */
+  .keynote-card{
+    background:var(--card); border:1px solid var(--line); border-left:4px solid var(--accent);
+    padding:22px 26px; border-radius:8px; margin-top:10px;
+  }
+  .keynote-card .speaker{font-size:18px; font-weight:700; margin:0 0 4px}
+  .keynote-card .aff{color:var(--muted); font-size:14px; margin-bottom:14px}
+  .keynote-card .talk-title{font-style:italic; font-size:16px; color:var(--ink)}
+
+  /* Accepted papers */
+  ol.papers{padding-left:22px}
+  ol.papers li{margin-bottom:14px}
+  ol.papers li .title{font-weight:600; color:var(--ink)}
+
+  /* Organizers */
+  .org-grid{display:grid; grid-template-columns:1fr 1fr; gap:18px}
+  @media (max-width:640px){.org-grid{grid-template-columns:1fr}}
+  .person{
+    background:var(--card); border:1px solid var(--line); border-radius:8px;
+    padding:18px 20px;
+  }
+  .person .role{
+    font-size:11.5px; letter-spacing:.10em; text-transform:uppercase;
+    color:var(--accent-dark); font-weight:700; margin-bottom:6px;
+  }
+  .person h4{margin:0 0 4px; font-size:17px; font-weight:700}
+  .person .aff{font-size:13.5px; color:var(--muted); line-height:1.45}
+  .person .email{font-size:13px; margin-top:6px; display:block}
+
+  /* PC */
+  .pc-list{
+    columns:2; column-gap:32px;
+    margin:0; padding:0; list-style:none;
+    font-size:14px;
+  }
+  @media (max-width:640px){.pc-list{columns:1}}
+  .pc-list li{break-inside:avoid; padding:4px 0; border-bottom:1px dotted var(--line)}
+  .pc-list li strong{font-weight:600}
+  .pc-list li span{color:var(--muted); display:block; font-size:13px}
+
+  /* Year strip */
+  .year-strip{
+    padding:24px 0; background:var(--card);
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    text-align:center;
+  }
+  .year-strip .label{
+    font-size:11.5px; letter-spacing:.10em; text-transform:uppercase;
+    color:var(--muted); margin-bottom:10px;
+  }
+  .year-strip .years{display:flex; flex-wrap:wrap; gap:4px; justify-content:center}
+  .year-strip a, .year-strip span{
+    padding:4px 9px; font-size:12.5px; font-weight:600;
+    font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;
+    background:#F0F3F8; color:var(--accent); border:1px solid #DCE3ED;
+    border-radius:4px; text-decoration:none;
+  }
+  .year-strip a:hover{background:var(--accent); color:#fff; border-color:var(--accent)}
+  .year-strip .current{background:var(--ink); color:#fff; border-color:var(--ink)}
+  .year-strip .skip{opacity:.4; cursor:not-allowed}
 
   /* Footer */
-  footer.site{
+  footer{
     background:var(--ink); color:#A7B7CB;
-    padding:24px 0;
-    font-size:13px;
+    padding:22px 0; font-size:13px;
   }
-  footer.site a{color:#9DBCEC; text-decoration:none; margin-right:14px}
-  footer.site a:hover{color:#fff}
-  footer.site .row{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px}
+  footer .row{display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px}
+  footer a{color:#9DBCEC; margin-right:12px}
+  footer a:hover{color:#fff}
 </style>
 </head>
 <body>
 
-<header class="site">
-  <div class="container row">
-    <div class="brand">
-      <a href="index.html" class="logo">
-        <div class="markbox">BIO<span>KDD</span></div>
-        <div class="title-block">
-          <div class="edition">BIOKDD 2017 · 16th edition</div>
-          <h1>16th International Workshop on Data Mining in Bioinformatics</h1>
-          <div class="conjunction">Held in conjunction with <a href="http://www.kdd.org/kdd2017/">ACM SIGKDD 2017</a></div>
-        </div>
-      </a>
+<header class="titleblock">
+  <div class="container">
+    <div class="edition">BIOKDD'17 · 16th edition</div>
+    <h1>16th International Workshop on Data Mining in Bioinformatics</h1>
+    <div class="subtitle">in conjunction with the 23rd ACM SIGKDD Conference (KDD 2017)</div>
+    <div class="where-when">
+      <strong>August 14, 2017</strong> &middot; Halifax, Nova Scotia, Canada
     </div>
+    <div class="conjunction">Held with <a href="http://www.kdd.org/kdd2017/">ACM SIGKDD 2017</a> · Aug 13–17, 2017</div>
+    <div class="theme">Theme: Multiscale and Multimodal Analysis for Computational Biology</div>
   </div>
 </header>
 
-<nav class="main">
+<section id="intro">
   <div class="container">
-    <ul>
-      <li class="current"><a href="index.html">Home</a></li>
-      <li><a href="people.html">Organizers</a></li>
-      <li><a href="call.html">Call for Papers</a></li>
-      <li><a href="papers.html">Accepted Papers</a></li>
-      <li><a href="agenda.html">Agenda</a></li>
-      <li><a href="preceding.html">Past Workshops</a></li>
-      <li><a href="contact.html">Social Aspect</a></li>
+    <h2>Workshop overview</h2>
+    <p>BIOKDD 2017 encourages KDD researchers to take on the numerous challenges that Bioinformatics offers. This year's edition features the theme of <em>Multiscale and Multimodal Analysis for Computational Biology</em> — the use of data mining and machine learning approaches for the analysis of large amounts of heterogeneous complex biological and medical data being generated. Deep-learning methods are particularly encouraged. The goal is to build accurate predictive or descriptive models from these data, enabling novel discoveries in basic biology and medicine.</p>
+    <p>Selected high-quality papers from the workshop are invited to a special issue of <a href="https://www.computer.org/web/tcbb">IEEE/ACM Transactions on Computational Biology and Bioinformatics (TCBB)</a>, continuing the BIOKDD tradition.</p>
+  </div>
+</section>
+
+<section id="agenda">
+  <div class="container">
+    <h2>Agenda — August 14, 2017</h2>
+    <ul class="schedule">
+      <li><span class="time">8:00–8:10</span><span class="what"><strong>Opening Remarks</strong></span></li>
+      <li>
+        <span class="time">8:10–9:10</span>
+        <span class="what keynote">
+          Keynote Talk &mdash; Wei Wang (UCLA)
+          <em>"From Bioinformatics to Precision Medicine"</em>
+        </span>
+      </li>
+      <li>
+        <span class="time">9:10–9:35</span>
+        <span class="what">
+          Paper 1 &mdash; ANTENNA, a Multi-Rank, Multi-Layered Recommender System for Inferring Reliable Drug-Gene-Disease Associations
+        </span>
+      </li>
+      <li>
+        <span class="time">9:35–10:00</span>
+        <span class="what">
+          Paper 2 &mdash; Cost-sensitive Deep Learning for Early Readmission Prediction at A Major Hospital
+        </span>
+      </li>
+      <li><span class="time">10:00–10:30</span><span class="what break">Coffee Break</span></li>
+      <li>
+        <span class="time">10:30–10:55</span>
+        <span class="what">
+          Paper 3 &mdash; Improving the Prediction of Functional Outcome in Ischemic Stroke Patients
+        </span>
+      </li>
+      <li>
+        <span class="time">10:55–11:20</span>
+        <span class="what">
+          Paper 4 &mdash; Ontology-based workflow extraction from texts using word sense disambiguation
+        </span>
+      </li>
+      <li>
+        <span class="time">11:20–11:45</span>
+        <span class="what">
+          Paper 5 &mdash; Clustering Genetic Data: A Random Forest Cluster Ensemble Approach
+        </span>
+      </li>
+      <li>
+        <span class="time">11:45–12:00</span>
+        <span class="what"><strong>Discussion and Final Remarks</strong></span>
+      </li>
     </ul>
   </div>
-</nav>
+</section>
 
-<section class="cover">
+<section id="keynote">
   <div class="container">
-    <div class="badge">August 14, 2017 · Halifax, Nova Scotia, Canada</div>
-    <h2>Multiscale and Multimodal Analysis for Computational Biology</h2>
-    <div class="when-where">
-      Held with <strong>ACM SIGKDD&nbsp;2017</strong> in Halifax — bringing together data-mining and biomedical-informatics researchers around deep-learning methods for heterogeneous biological data.
+    <h2>Keynote speaker</h2>
+    <div class="keynote-card">
+      <div class="speaker">Wei Wang</div>
+      <div class="aff">Department of Computer Science, University of California, Los Angeles (UCLA)</div>
+      <div class="talk-title">"From Bioinformatics to Precision Medicine"</div>
     </div>
   </div>
 </section>
 
-<main>
-  <div class="container grid">
-
-    <div>
-      <h2>Welcome to BIOKDD 2017</h2>
-      <p>The 16th International Workshop on Data Mining in Bioinformatics encourages KDD researchers to take on the numerous challenges that Bioinformatics offers. This year's edition features the theme <strong>Multiscale and Multimodal Analysis for Computational Biology</strong> — applying data mining and machine learning to the large amounts of heterogeneous, complex biological and medical data the post-genomic era is producing.</p>
-
-      <p>Deep-learning methods are particularly encouraged. The goal is to build accurate predictive and descriptive models from heterogeneous data that enable novel discoveries in basic biology and medicine.</p>
-
-      <h3>Topics of interest</h3>
-      <div class="chips">
-        <span>Deep learning for biological and clinical data</span>
-        <span>Predictive models for complex phenotypes</span>
-        <span>Biological networks &amp; pathways</span>
-        <span>Next-generation sequencing</span>
-        <span>Biomarker &amp; mutation discovery</span>
-        <span>Genotype–phenotype associations</span>
-        <span>Multi-omics integration</span>
-        <span>Comparative genomics</span>
-        <span>Metagenomics</span>
-        <span>RNA-seq &amp; microarray analysis</span>
-        <span>Non-coding RNAs</span>
-        <span>Regulatory motif discovery</span>
-        <span>Structural bioinformatics</span>
-        <span>NGS + proteomics correlation</span>
-        <span>Functional annotation</span>
-        <span>Cheminformatics</span>
-        <span>Biomedical data management</span>
-        <span>Visualization of biological data</span>
-        <span>Semantic web &amp; ontology-driven integration</span>
-        <span>Privacy in genomic data mining</span>
-      </div>
-
-      <h3>Submission and publication</h3>
-      <p>Papers are at most 9 pages long, single-spaced, font size 10 or larger, with one-inch margins. Camera-ready papers follow the official ACM Proceedings Format. Selected high-quality papers from the workshop are invited to a special issue of <a href="https://www.computer.org/web/tcbb">IEEE/ACM Transactions on Computational Biology and Bioinformatics (TCBB)</a>, continuing the BIOKDD tradition.</p>
-
-      <p>Submissions are handled through EasyChair: <a href="https://easychair.org/conferences/?conf=biokdd2017">easychair.org/conferences/?conf=biokdd2017</a>.</p>
-
-      <h3>Workshop history</h3>
-      <p>This is the 16th edition of BIOKDD. Past workshops attracted 50–100 participants drawn from academia, industry and government labs across the world, with 10–11 contributed papers and 1–2 invited talks each year. Information on past workshops is on the <a href="preceding.html">Past Workshops</a> page.</p>
-    </div>
-
-    <aside>
-      <div class="card">
-        <h3>Important Dates</h3>
-        <ul>
-          <li>
-            <span class="label">Paper submission</span>
-            <span class="date">May 21, 2017</span>
-          </li>
-          <li>
-            <span class="label">Notification of acceptance</span>
-            <span class="date">June 16, 2017</span>
-          </li>
-          <li>
-            <span class="label">Workshop day</span>
-            <span class="date">August 14, 2017</span>
-          </li>
-        </ul>
-        <a class="cta" href="call.html">View Call for Papers →</a>
-      </div>
-
-      <div class="card">
-        <h3>Stay connected</h3>
-        <ul>
-          <li><a href="https://www.facebook.com/biokdd">Facebook page</a></li>
-          <li><a href="https://www.linkedin.com/groups/3825744">LinkedIn group</a></li>
-          <li><a href="contact.html">Contact &amp; social info</a></li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3>Organizers</h3>
-        <ul>
-          <li><span class="label">Program Chairs</span><span class="date">Jean Gao · Min Song</span></li>
-          <li><span class="label">General Chairs</span><span class="date">Jake Y. Chen · Mohammed J. Zaki</span></li>
-          <li><span class="label">Keynote</span><span class="date">Wei Wang (UCLA)</span></li>
-        </ul>
-        <a class="cta" href="people.html">Full organizer list →</a>
-      </div>
-    </aside>
-
-  </div>
-</main>
-
-<section class="past">
+<section id="papers">
   <div class="container">
-    <h3>Browse the 25-year BIOKDD archive</h3>
-    <div class="year-grid">
-      <a class="yr" href="https://biokdd.org/biokdd01/">2001</a>
-      <a class="yr" href="https://biokdd.org/biokdd02/">2002</a>
-      <a class="yr" href="https://biokdd.org/biokdd03/">2003</a>
-      <a class="yr" href="https://biokdd.org/biokdd04/">2004</a>
-      <a class="yr" href="https://biokdd.org/biokdd05/">2005</a>
-      <a class="yr" href="https://biokdd.org/biokdd06/">2006</a>
-      <a class="yr" href="https://biokdd.org/biokdd07/">2007</a>
-      <a class="yr" href="https://biokdd.org/biokdd08/">2008</a>
-      <span class="yr skip" title="Workshop not held">2009</span>
-      <a class="yr" href="https://biokdd.org/biokdd10/">2010</a>
-      <a class="yr" href="https://biokdd.org/biokdd11/">2011</a>
-      <a class="yr" href="https://biokdd.org/biokdd12/">2012</a>
-      <a class="yr" href="https://biokdd.org/biokdd13/">2013</a>
-      <a class="yr" href="https://biokdd.org/biokdd14/">2014</a>
-      <a class="yr" href="https://biokdd.org/biokdd15/">2015</a>
-      <a class="yr" href="https://biokdd.org/biokdd16/">2016</a>
-      <a class="yr current" href="https://biokdd.org/biokdd17/">2017</a>
-      <a class="yr" href="https://biokdd.org/biokdd18/">2018</a>
-      <a class="yr" href="https://biokdd.org/biokdd19/">2019</a>
-      <a class="yr" href="https://biokdd.org/biokdd20/">2020</a>
-      <a class="yr" href="https://biokdd.org/biokdd21/">2021</a>
-      <a class="yr" href="https://biokdd.org/biokdd22/">2022</a>
-      <a class="yr" href="https://biokdd.org/biokdd23/">2023</a>
-      <a class="yr" href="https://biokdd.org/biokdd24/">2024</a>
-      <a class="yr" href="https://biokdd.org/biokdd25/">2025</a>
-      <a class="yr" href="https://biokdd.org/biokdd26/">2026</a>
-    </div>
+    <h2>Accepted papers</h2>
+    <p style="color:var(--muted); font-size:14.5px; margin-bottom:18px">Five papers were selected for oral presentation, each invited to extend their work for the IEEE/ACM TCBB Special Issue.</p>
+    <ol class="papers">
+      <li>
+        <span class="title">ANTENNA, a Multi-Rank, Multi-Layered Recommender System for Inferring Reliable Drug-Gene-Disease Associations</span>
+      </li>
+      <li>
+        <span class="title">Cost-sensitive Deep Learning for Early Readmission Prediction at A Major Hospital</span>
+      </li>
+      <li>
+        <span class="title">Improving the Prediction of Functional Outcome in Ischemic Stroke Patients</span>
+      </li>
+      <li>
+        <span class="title">Ontology-based workflow extraction from texts using word sense disambiguation</span>
+      </li>
+      <li>
+        <span class="title">Clustering Genetic Data: A Random Forest Cluster Ensemble Approach</span>
+      </li>
+    </ol>
   </div>
 </section>
 
-<footer class="site">
+<section id="organizers">
+  <div class="container">
+    <h2>Organizers</h2>
+
+    <h3>General Chairs</h3>
+    <div class="org-grid">
+      <div class="person">
+        <div class="role">General Chair</div>
+        <h4>Jake Y. Chen, PhD</h4>
+        <div class="aff">University of Alabama at Birmingham<br>Birmingham, AL, USA</div>
+        <a class="email" href="mailto:jakechen@uab.edu">jakechen@uab.edu</a>
+      </div>
+      <div class="person">
+        <div class="role">General Chair</div>
+        <h4>Mohammed J. Zaki, PhD</h4>
+        <div class="aff">Department of Computer Science<br>Rensselaer Polytechnic Institute, Troy, NY, USA</div>
+        <a class="email" href="mailto:zaki@cs.rpi.edu">zaki@cs.rpi.edu</a>
+      </div>
+    </div>
+
+    <h3>Program Chairs</h3>
+    <div class="org-grid">
+      <div class="person">
+        <div class="role">Program Chair</div>
+        <h4>Xin Gao</h4>
+        <div class="aff">Computational Bioscience Research Center<br>King Abdullah University of Science and Technology (KAUST)<br>Thuwal, Saudi Arabia</div>
+        <a class="email" href="mailto:xin.gao@kaust.edu.sa">xin.gao@kaust.edu.sa</a>
+      </div>
+      <div class="person">
+        <div class="role">Program Chair</div>
+        <h4>Le Song</h4>
+        <div class="aff">Computational Science and Engineering<br>College of Computing, Georgia Institute of Technology<br>Atlanta, GA, USA</div>
+        <a class="email" href="mailto:lsong@cc.gatech.edu">lsong@cc.gatech.edu</a>
+      </div>
+    </div>
+
+    <h3>Past Program Chairs (Steering)</h3>
+    <ul class="pc-list">
+      <li><strong>Sara C. Madeira</strong><span>Universidade de Lisboa</span></li>
+      <li><strong>Chandan K. Reddy</strong><span>Virginia Tech</span></li>
+      <li><strong>Tamer Kahveci</strong><span>University of Florida</span></li>
+      <li><strong>Saeed Salem</strong><span>North Dakota State University</span></li>
+      <li><strong>Mehmet Koyutürk</strong><span>Case Western Reserve University</span></li>
+      <li><strong>Gaurav Pandey</strong><span>Icahn School of Medicine at Mount Sinai</span></li>
+      <li><strong>Huzefa Rangwala</strong><span>George Mason University</span></li>
+      <li><strong>George Karypis</strong><span>University of Minnesota</span></li>
+      <li><strong>Sarath Chandra Janga</strong><span>IUPUI</span></li>
+      <li><strong>Dongxiao Zhu</strong><span>Wayne State University</span></li>
+      <li><strong>Jieping Ye</strong><span>University of Michigan</span></li>
+    </ul>
+  </div>
+</section>
+
+<section id="pc">
+  <div class="container">
+    <h2>Program Committee</h2>
+    <ul class="pc-list">
+      <li><strong>Alexandre Francisco</strong><span>IST, Universidade de Lisboa / INESC-ID</span></li>
+      <li><strong>Asa Ben-Hur</strong><span>Colorado State University</span></li>
+      <li><strong>Florentino Fdez-Riverola</strong><span>University of Vigo</span></li>
+      <li><strong>Hammad Naveed</strong><span>Toyota Technological Institute at Chicago</span></li>
+      <li><strong>Jake Chen</strong><span>University of Alabama at Birmingham</span></li>
+      <li><strong>Jian Peng</strong><span>University of Illinois at Urbana-Champaign</span></li>
+      <li><strong>Jie Zheng</strong><span>Nanyang Technological University</span></li>
+      <li><strong>Jinbo Xu</strong><span>Toyota Technological Institute at Chicago</span></li>
+      <li><strong>Jinze Liu</strong><span>University of Kentucky</span></li>
+      <li><strong>Ka-Chun Wong</strong><span>City University of Hong Kong</span></li>
+      <li><strong>Le Song</strong><span>Georgia Institute of Technology</span></li>
+      <li><strong>Lingfei Wu</strong><span>IBM T. J. Watson Research Center</span></li>
+      <li><strong>Miguel Rocha</strong><span>University of Minho</span></li>
+      <li><strong>Minghua Deng</strong><span>Peking University</span></li>
+      <li><strong>Mohammed Zaki</strong><span>Rensselaer Polytechnic Institute</span></li>
+      <li><strong>Robert Hoehndorf</strong><span>King Abdullah University of Science and Technology</span></li>
+      <li><strong>Rui Chang</strong><span>Mount Sinai</span></li>
+      <li><strong>Saeed Salem</strong><span>North Dakota State University</span></li>
+      <li><strong>Sha Cao</strong><span>University of Georgia</span></li>
+      <li><strong>Shiwei Sun</strong><span>Institute of Computing Technology, Chinese Academy of Sciences</span></li>
+      <li><strong>T. M. Murali</strong><span>Virginia Tech</span></li>
+      <li><strong>Tamer Kahveci</strong><span>University of Florida</span></li>
+      <li><strong>Wenxiu Ma</strong><span>University of California, Riverside</span></li>
+      <li><strong>Xia Ning</strong><span>IUPUI</span></li>
+      <li><strong>Xin Gao</strong><span>King Abdullah University of Science and Technology</span></li>
+      <li><strong>Xuefeng Cui</strong><span>Tsinghua University</span></li>
+      <li><strong>Yang Shen</strong><span>Texas A&amp;M University</span></li>
+      <li><strong>Ying Ding</strong><span>Indiana University</span></li>
+      <li><strong>Zechen Chong</strong><span>University of Alabama at Birmingham</span></li>
+    </ul>
+  </div>
+</section>
+
+<div class="year-strip">
+  <div class="container">
+    <div class="label">Browse the 25-year BIOKDD archive</div>
+    <div class="years">
+      <a href="https://biokdd.org/biokdd01/">2001</a>
+      <a href="https://biokdd.org/biokdd02/">2002</a>
+      <a href="https://biokdd.org/biokdd03/">2003</a>
+      <a href="https://biokdd.org/biokdd04/">2004</a>
+      <a href="https://biokdd.org/biokdd05/">2005</a>
+      <a href="https://biokdd.org/biokdd06/">2006</a>
+      <a href="https://biokdd.org/biokdd07/">2007</a>
+      <a href="https://biokdd.org/biokdd08/">2008</a>
+      <span class="skip" title="not held">2009</span>
+      <a href="https://biokdd.org/biokdd10/">2010</a>
+      <a href="https://biokdd.org/biokdd11/">2011</a>
+      <a href="https://biokdd.org/biokdd12/">2012</a>
+      <a href="https://biokdd.org/biokdd13/">2013</a>
+      <a href="https://biokdd.org/biokdd14/">2014</a>
+      <a href="https://biokdd.org/biokdd15/">2015</a>
+      <a href="https://biokdd.org/biokdd16/">2016</a>
+      <span class="current">2017</span>
+      <a href="https://biokdd.org/biokdd18/">2018</a>
+      <a href="https://biokdd.org/biokdd19/">2019</a>
+      <a href="https://biokdd.org/biokdd20/">2020</a>
+      <a href="https://biokdd.org/biokdd21/">2021</a>
+      <a href="https://biokdd.org/biokdd22/">2022</a>
+      <a href="https://biokdd.org/biokdd23/">2023</a>
+      <a href="https://biokdd.org/biokdd24/">2024</a>
+      <a href="https://biokdd.org/biokdd25/">2025</a>
+      <a href="https://biokdd.org/biokdd26/">2026</a>
+    </div>
+  </div>
+</div>
+
+<footer>
   <div class="container row">
     <div>© 2017–2026 BIOKDD Workshop · ACM SIGKDD</div>
     <div>
       <a href="https://biokdd.org/">BIOKDD home</a>
       <a href="https://biokdd.org/biokdd26/">Current workshop (2026)</a>
-      <a href="preceding.html">Past workshops</a>
+      <a href="https://www.facebook.com/biokdd">Facebook</a>
+      <a href="https://www.linkedin.com/groups/3825744">LinkedIn</a>
     </div>
   </div>
 </footer>
