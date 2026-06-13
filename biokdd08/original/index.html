@@ -1,0 +1,329 @@
+<html>
+<head>
+<link href="/css/gsimple.css" rel=stylesheet type="text/css">
+<title>8th International Workshop on Data Mining in Bioinformatics 2008</title>
+<META name="keywords" content="Jake Chen, Stefano Lonardi, Mohammed Zaki, Indiana, Bioinformatics, Data Mining, Knowledge Discovery, Systems Biology">
+<META name="description" content="8th International Workshop on Data Mining in Bioinformatics, August 2008, Las Vegas, Nevada, USA">
+<META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (X11; I; Linux 2.0.25 i686) [Netscape]">
+<style type="text/css">
+<!--
+.style2 {
+	color: #FF0000;
+	font-weight: bold;
+}
+.style3 {
+	font-family: Arial, Helvetica, sans-serif;
+	color: #006666;
+}
+.style5 {font-weight: bold}
+-->
+</style>
+</head>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-6980331-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+<body class=corporate bgcolor="#ffffff" text="#000000" link="#0000CC" vlink="#800080" alink="#ff0000">
+<center>
+<!--#include file="header.htm" -->
+<table border=0 cellpadding=0 cellspacing=0 width="98%">
+	<tr> 
+	<td width="180" valign="top">  </td>
+	<td class="pagetitle">BIOKDD '08 Workshop</td>
+	</tr>
+	<tr> 
+		<td valign="top">  </td>
+		<td height="5" valign="top"></td>
+	</tr>
+</table>
+<table border=0 cellpadding=0 cellspacing=0 width="98%">
+  <tr>
+ 	<td width="180" valign="top" style="background-color: #ffffff">  
+		<!--#include virtual="/biokdd08/nav_menu.htm" --> </td>
+    <td style="background-color: #cccccc" width="1" valign="top"></td>
+    <td style="background-color: #ffffff" width="10" valign="top"></td>
+      <td valign="top"><table width=80% border="0" align="center">
+        <tr>
+          <td width="20%"><a href="/biokdd-book09/index.stm"><img src="../img/Biological Data Mining cover.png" width="150" align="right"></a></td>
+          <td width="60%"><p align="left"> Announcing a BIOKDD 733-page new book <br>
+            &quot;<strong><a href="/biokdd-book09/index.stm">Biological Data Mining</a></strong>&quot; <img src="../img/new.gif" width="31" height="13"><br>
+            Edited by Jake Y. Chen and Stefano Lonardi (BIOKDD '07-08 co-chairs)<br>
+            published by Chapman &amp; Hall/CRC Press (Sept 2009).</p></td>
+        </tr>
+      </table>
+
+        <p><span class="topictitle">Introduction</span><a name="intro"></a></p>
+        <p>Bioinformatics is the science of managing, mining, and  interpreting information from biological data. Various genome projects have  contributed to an exponential growth in DNA and protein sequence databases.  Advances in high-throughput technology such as microarrays and mass  spectrometry have further created the fields of functional genomics and  proteomics, in which one can monitor quantitatively the presence of multiple  genes, proteins, metabolites, and compounds in a given biological state. The  ongoing influx of these data, the presence of biological answers to data  observed despite noises, and the gap between data collection and knowledge  curation have collectively created exciting opportunities for data mining  researchers.</p>
+        <p>While tremendous progress has been made over the years,  many of the fundamental problems in bioinformatics, such as protein structure  prediction, gene-environment interaction, and regulatory pathway mapping, are  still open. Data mining will play essential roles in understanding these  fundamental problems and development of novel therapeutic/diagnostic solutions  in post-genome medicine. </p>
+        <p><span class="topictitle">Workshop History (2001-2007)  <a name="history"></a></span></p>
+        <p>Data Mining approaches seem ideally suited for  Bioinformatics, since it is data-rich, but lacks a comprehensive theory of  life's organization at the molecular level. The extensive databases of  biological information create both challenges and opportunities for developing  novel KDD methods. To highlight these avenues we organized the Workshops on  Data Mining in Bioinformatics (BIOKDD 2001-2007), held annually in conjunction  with the ACM SIGKDD Conference. 
+This will be the 8th year for the workshop.</p>
+        <p>Past workshops attracted 50-100 participants, from  academia, industry and government labs, underscoring the surge of interest in  this exciting and rapidly expanding field.&nbsp;  The program of the workshops included 10-11 contributed papers, and 1-2  invited talks.<br>
+          Information on past workshops is available at:<br>
+          <a href="http://bio.informatics.iupui.edu/biokdd07">http://bio.informatics.iupui.edu/biokdd07</a><br>
+          <a href="http://www.cse.ohio-state.edu/~srini/biokdd05.html"></a><a href="http://www.cs.rpi.edu/~zaki/BIOKDD06">http://www.cs.rpi.edu/~zaki/BIOKDD06</a><br>
+          <a href="http://www.cse.ohio-state.edu/~srini/biokdd05.html">http://www.cse.ohio-state.edu/~srini/biokdd05.html</a><br>
+          <a href="http://www.cs.rpi.edu/~zaki/BIOKDD04">http://www.cs.rpi.edu/~zaki/BIOKDD04</a><br>
+          <a href="http://www.cs.rpi.edu/~zaki/BIOKDD03">http://www.cs.rpi.edu/~zaki/BIOKDD03</a><br>
+          <a href="http://www.cs.rpi.edu/~zaki/BIOKDD02">http://www.cs.rpi.edu/~zaki/BIOKDD02</a><br>
+          <a href="http://www.cs.rpi.edu/~zaki/BIOKDD01">http://www.cs.rpi.edu/~zaki/BIOKDD01</a></p>
+        <p><span class="topictitle">Call for Papers <a name="topics"></a></span></p>
+        <p>The goal of this workshop is to encourage KDD researchers  to take on the numerous challenges that Bioinformatics offers. This year, the  workshop will feature a theme &ldquo;<strong>complex biological systems</strong>&rdquo; and &ldquo;<strong>knowledge  discovery</strong>&rdquo;. Different from analyzing single molecules, complex biological  systems consist of components that are in themselves complex and interacting  with each other. Understanding how the various components work in concert,  using modern high-throughput biology and data mining methods, is crucial to the  ultimate goal of genome-based economy such as genome medicine and new  agricultural and energy solutions. </p>
+        <ul>
+          <li>Phylogenetics and comparative Genomics</li>
+          <li>DNA microarray data analysis</li>
+          <li>RNAi and microRNA Analysis</li>
+          <li>Protein/RNA structure prediction</li>
+          <li>Sequence and structural motif finding</li>
+          <li>Modeling of biological networks and pathways</li>
+          <li>Statistical learning methods in bioinformatics</li>
+          <li>Computational proteomics</li>
+          <li>Computational biomarker discoveries</li>
+          <li>Computational drug discoveries</li>
+          <li>Biomedical text mining</li>
+          <li>Biological data management techniques</li>
+          <li>Semantic webs and ontology-driven biological  data integration methods</li>
+        </ul>
+        <p>Papers should be at most 10 pages long, single-spaced, in  font size 10 or larger with one-inch margins on all sides.&nbsp; Paper should be submitted in PDF/PS format through Easychar at the following link: <a href="http://www.easychair.org/conferences?conf=biokdd08">http://www.easychair.org/conferences?conf=biokdd08</a></p>
+        <p>Camera-ready format papers may be referenced from previous BIOKDD conference proceedings (e.g., <a href="/biokdd07/BIOKDD07_Proceedings.pdf">BIOKDD07</a>) </p>
+        <p><span class="topictitle">Important Dates </span><a name="deadline"></a></p>
+        <blockquote>
+          <p>5/26/2008 &nbsp;&nbsp;&nbsp;&nbsp;  Deadline for Submission of Papers<br>
+            6/23/2008&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Notification of Acceptance; Workshop Registration Open <br>
+7/25/2008&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Submission of Camera Ready Papers<br>
+8/24//2008&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workshop Presentation</p>
+        </blockquote>        
+        <p><span class="topictitle">Publication </span><a name="publication"></a></p>
+        <p>All papers will be published at the workshop proceedings and at the <strong>ACM digital library</strong>.</p>
+        <p><em><strong>Submission of accepted papers</strong></em>. For accepted workshop papers, we require that each camera-ready paper be formatted strictly according to the official ACM Proceedings Format. Please submit PDF file only.  To prepare for the camera-ready PDF file submission, you may use either  the <a href="pubform.doc">Microsoft word template</a>  or  the  Latex files preparation instructions found <a href="http://www.acm.org/sigs/pubs/proceed/template.html#aL2">here</a>. All final camera-ready submissions must be accompanied by a completed digital copy (scanned Okay) of the <a href="ACM_ Copyright_Form.pdf">ACM copyright transfer form</a>, or else the paper cannot be included in the final workshop proceedings. </p>
+        <p><em><strong>Publication of proceeding and expanded papers</strong></em>. Expanded version of selected high-quality papers from the workshop will be invited for  publication in a special issue of <em>a major bioinformatics/biocomputing journal (</em>in 2007, it was <em>Journal of Bioinformatics and Computational Biology</em>). Details of the journal/book publication will be announced after the workshop at the workshop's web site.</p>
+        <p><em><strong>Online BIOKDD '08 Proceedings</strong></em>. You may download the pdf document <a href="BIOKDD08_proceedings.pdf">here</a>.</p>
+        <p><span class="topictitle">Program Overview <a name="program"></a></span></p>
+        <blockquote>
+          <p><strong><em>Duration</em></strong>: ONE HALF DAY</p>
+          <p><em><strong>Location</strong></em>: BIOKDD '08 will be held in the morning of August 24th 2008, in conjuction with ACM KDD 2008, at Las Vegas, Nevada, USA. The following is the contact  information for the hotel:</p>
+          <blockquote>
+            <blockquote>
+              <p>Loews Lake Las Vegas Resort<br>101 Montelago Boulevard<br>Henderson, Nevada<br>
+              </p>
+            </blockquote>
+          </blockquote>
+          </blockquote>
+        <p align="justify" class="topictitle"><span class="topictitle">Registration <a name="registration" id="registration"></a></span></p>
+          <p><em><strong>Note</strong></em>: </p>
+          <ol>
+            <li>The BIOKDD '08 workshop presenter-only registrations are now closed. </li>
+            <li>To attend the workshop, you do not need to register with us. </li>
+            <li>BIOKDD '08  attendees (except for presenters) may check with the ACM SIGKDD '08 conference and go through this <a href="http://www.sigkdd.org/kdd2008/registration.html">registration process</a> to officially register for workshop and get printed workshop proceedings from them.</li>
+          </ol>
+        <p><span class="topictitle">Schedule <a name="schedule"></a></span></p>
+        <p>The workshop will be held on August 24th 2008 at the SIGKDD '08 conference site.</p>
+        <p>8:20-8:30am: Opening Remarks</p>
+        <p class="style5">          Session 1.</p>
+        <p>          8:30-8:50am: Talk 1: Function Prediction Using Neighborhood Patterns<br>
+&bull; Petko Bogdanov and Ambuj K. Singh, University of California, Santa Barbara, USA</p>
+        <p>          8:50-9:10am: Talk 2: Statistical Modeling of Medical Indexing Processes for Biomedical Knowledge 
+          Information Discovery from Text<br>
+&bull; Markus Bundschus, Mathaeus Dejori, Shipeng Yu, Volker Tresp, and Hans-Peter Kriegel, University of 
+Munich, Germany</p>
+        <p>          9:10-9:30am: Talk 3: Information Theoretic Methods for Detecting Multiple Loci Associated with Complex 
+          Diseases<br>
+&bull; Pritam Chanda, Aidong Zhang, Lara Sucheston and Murali Ramanathan, State University of New York, 
+Buffalo, USA</p>
+        <p>          9:30-9:50am: Talk 4: A Fast, Large-scale Learning Method for Protein Sequence Classification<br>
+&bull; Pavel Kuksa, Pai-Hsi Huang, and Vladimir Pavlovic, Rutgers University, USA</p>
+        <p>          9:50-10:05am: Coffee Break</p>
+        <p><strong>          Session 2.</strong></p>
+        <p>          10:05-10:50am: Keynote Talk: Link Mining: exploring the power of links<br>
+&bull; Philip Yu, University of Illinois, Chicago, USA</p>
+        <p>          10:50-11:10am: Talk 5: Catching Old Influenza Virus with A New Markov Model page 38-43<br>
+&bull; HamChing Lam and Daniel Boley, University of Minnesota, USA</p>
+        <p>          11:10-11:30am: Talk 6: GPD: A Graph Pattern Diffusion Kernel for Accurate Graph Classification with Applications in Cheminformatics<br>
+&bull; Aaron Smalter, Luke Huan, Gerald Lushington and Yi Jia, University of Kansas, USA</p>
+        <p>          11:30-11:50am: Talk 7: Reinforcing Mutual Information-based Strategy for Feature Selection for Microarray Data<br>
+&bull; Jian Tang, Shuigeng Zhou, Feng Li and Jiang Kai, Fudan University, China</p>
+        <p>          11:50am-12:10pm: Talk 8: Graph-based Temporal Mining of Metabolic Pathways with Microarray Data<br>
+&bull; Chang hun You, Lawrence B. Holder, Diane J. Cook, Washington State University, USA</p>
+        <p>          12:10-12:20pm: Concluding Remarks</p>
+        <p align="justify" class="topictitle">Workshop Proceedings <a name="proceedings" id="proceedings"></a></p>
+        <ul>
+          <li>BIOKDD '08 workshop was successfully completed on August 24th 2008. You may find the electronic proceedings <a href="BIOKDD08_Proceedings.pdf">here</a>.        </li>
+        </ul>
+        <p><span class="topictitle">Organizers </span><a name="organizers"></a></p>
+        <table  border="0">
+		  <td height="50" colspan="2" valign="bottom"><h4 align="center">Program Chairs		      </h4></td>
+          
+			<tr>
+                <TD vAlign=top><IMG src="/img/pix_stefano.png" width="127" height=180 ></TD>
+            <td ><p><strong>Stefano Lonardi</strong><br>
+ Department of Computer Science &amp; Engineering<br>
+University of California<br>
+Riverside, CA 92521<br>
+  Email: <a href="mailto:stelo@cs.ucr.edu">stelo@cs.ucr.edu</a></p>
+              <p>            Web site: <a href="http://www.cs.ucr.edu/~stelo/" target="_parent">http://www.cs.ucr.edu/~stelo/</a></p></td>
+          </tr>
+			<tr>
+              <TD vAlign=top><IMG src="/img/pix_chenj.jpg" width="118" height=150 ></TD>
+			  <td><p><strong>Jake Y. Chen</strong><br>
+			    Indiana University School of Informatics<br>
+			    Purdue School of Science Department of Computer &amp; Information Science<br>
+			    Indiana University&ndash;Purdue University Indianapolis<br>
+			    Indianapolis, IN 46202<br>
+			    <a href="mailto:jakechen@iupui.edu"></a> Email: <a href="mailto:jakechen@iupui.edu">jakechen@iupui.edu</a><br>
+			    Web site: <a href="http://bio.informatics.iupui.edu/CV/" target="_parent">http://bio.informatics.iupui.edu/CV/</a></p></td>
+		  </tr>
+
+			          <tr>
+                <TD width="200" vAlign=top><IMG src="/img/pix_zaki.jpg" ></TD>
+            <td><p><strong>Mohammed Zaki</strong><br>
+Department of Computer Science<br>
+Rensselaer Polytechnic Institute<br>
+Troy, NY 12180-3590<br>
+<a href="mailto:jakechen@iupui.edu"></a>                Email: <a href="mailto:zaki@cs.rpi.edu">zaki@cs.rpi.edu</a></p>
+              <p>                Web site: <a href="http://www.cs.rpi.edu/~zaki/" target="_parent">http://www.cs.rpi.edu/~zaki/</a></p></td>
+          </tr>
+<tr>		    <td height="50" colspan="2" valign="bottom"><h4 align="center">Program Committee 	          </h4></td> 
+</tr>
+			          <tr>
+            <td  colspan="2"><table align="center" cellpadding="0" cellspacing="0">
+              <td width="200" height="20">Alberto    Apostolico</td>
+                  <td width="500">Georgia Tech    &amp; University of Padova</td>
+               
+               <tr height="20">
+                 <td height="20">Ann Loraine</td>
+                 <td>University of North Carolina, Charlotte</td>
+               </tr>
+               <tr height="20">
+                 <td height="20">Chad Myers</td>
+                 <td>University of Minnesota</td>
+               </tr>
+               <tr height="20">
+                 <td height="20">Chandan K. Reddy</td>
+                 <td>Wayne State University</td>
+               </tr>
+               <tr height="20">
+                 <td height="20">Dong Xu</td>
+                 <td>University of Missouri</td>
+               </tr>
+               <tr height="20">
+                 <td height="20">Giuseppe Lancia</td>
+                 <td>University of Udine, Italy&nbsp;</td>
+               </tr>
+               <tr height="20">
+                 <td height="20">Isidore Rigoutsos&nbsp;</td>
+                 <td>IBM T. J. Watson Research Center</td>
+               </tr>
+               <tr height="20">
+                 <td height="20">Jason Wang</td>
+                 <td>New Jersey Institute of Technology</td>
+               </tr>
+               <tr height="20">
+                 <td height="20">Jie Zheng</td>
+                 <td>NCBI, USA</td>
+               </tr>
+               <tr height="20">
+                 <td height="20">Jing Li</td>
+                 <td>Case Western Reserve University</td>
+               </tr>
+               <tr height="20">
+                 <td height="20">Knut Reinert</td>
+                 <td>Freie Universitt Berlin, Germany</td>
+               </tr>
+               <tr height="20">
+                 <td height="20">Li Liao</td>
+                 <td>University of Delaware</td>
+               </tr>
+               <tr height="20">
+                 <td height="20">Luke Huan</td>
+                 <td>University of Kansas</td>
+               </tr>
+               <tr height="20">
+                 <td height="20">Mehmet Koyuturk&nbsp;</td>
+                 <td>Case Western Reserve University</td>
+               </tr>
+               <tr height="20">
+                 <td height="20">Michael Brudno</td>
+                 <td>University of Toronto</td>
+               </tr>
+               <tr height="20">
+                 <td height="20">Muhammad Abulaish</td>
+                 <td>Jamia Millia Islamia, India&nbsp;</td>
+               </tr>
+               <tr height="20">
+                 <td height="20">Natasa Przulj</td>
+                 <td>UC Irvine</td>
+               </tr>             
+              
+                            <tr height="20">
+                              <td height="20">Phoebe    Chen</td>
+                              <td>Deakin    University, Australia</td>
+                            </tr>
+                            <tr height="20">
+                              <td height="20">Rui Kuang</td>
+                              <td>University of Minnesota</td>
+                            </tr>
+                            <tr height="20">
+                              <td height="20">Seungchan Kim</td>
+                              <td>Arizona State University</td>
+                            </tr>
+                            <tr height="20">
+                              <td height="20">Si Luo</td>
+                              <td>Purdue University</td>
+                            </tr>
+                            <tr height="20">
+                              <td height="20">Simon Lin</td>
+                              <td>Northwestern University</td>
+                            </tr>
+                            <tr height="20">
+                              <td height="20">Walid G. Aref</td>
+                              <td>Purdue University</td>
+                            </tr>
+                            <tr height="20">
+                              <td height="20">Wei Wang</td>
+                              <td>University of North Carolina, Chapel    Hill</td>
+                            </tr>
+                            <tr height="20">
+                              <td height="20">Xiaohua&nbsp;(Tony)&nbsp;Hu</td>
+                              <td>Drexel University</td>
+                            </tr>
+                            <tr height="20">
+                              <td height="20">Yaoqi Zhou</td>
+                              <td>Indiana University</td>
+                            </tr>
+                             <td height="20">Yves    Lussier</td>
+                                 <td>University of    Chicago</td>                           
+            </table>            </td>
+          </tr>
+        </table>        
+        <blockquote><p>&nbsp;</p>
+        </blockquote>        
+        <p align="center">&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td>
+    <td style="background-color: #ffffff" valign="top"></td>
+    <td style="background-color: #ffffff" valign="top"></td>
+    <td valign="middle"><div class=footer> 
+      <div align="right"><small><!--#config timefmt="%B %d, %Y"-->Last Modified: 
+        <!--#flastmod file="index.stm"-->
+      </small> </div>
+    </div></td>
+  </tr>
+  <tr>
+    <td valign="top">&nbsp;</td> 
+    <td style="background-color: #ffffff" width="1" valign="top"></td>
+    <td style="background-color: #ffffff" width="1" valign="top"></td>
+    <td valign="middle"> <!--#include virtual="/bottom.htm" --></td>
+  </tr>
+</table>
+<!--#include virtual="/footer.htm" -->
+<!--#include file="/statcounter_h.htm" -->
+</center>
+</body>
+</html>
